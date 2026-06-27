@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://dtsm6pmndsces"]
+
+[ext_resource type="Texture2D" uid="uid://b5i5eb683x6um" path="res://icon.svg" id="1_8m8ww"]
+[ext_resource type="Script" uid="uid://dghpy8qt41orq" path="res://wheel.gd" id="1_e0ure"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 64.0
+
+[node name="Wheel" type="Area2D" unique_id=562400103]
+script = ExtResource("1_e0ure")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2030350952]
+self_modulate = Color(0.7155956, 0.00046648324, 0.7320695, 1)
+texture = ExtResource("1_8m8ww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1015021295]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="Label" type="Label" parent="." unique_id=1291209962]
+offset_left = -32.0
+offset_top = -88.0
+offset_right = 27.0
+offset_bottom = -65.0
+text = "[SPACE]"
+
+[node name="PushArrow" type="Node2D" parent="." unique_id=518120772]
+
+[node name="ArrowRight" type="Line2D" parent="PushArrow" unique_id=1899772243]
+points = PackedVector2Array(0, 0, 128, 0)
+closed = true
+
+[node name="Line2D2" type="Line2D" parent="PushArrow/ArrowRight" unique_id=179918389]
+points = PackedVector2Array(128, 0, 112, -24, 112, 24)
+closed = true
+
+[node name="ArrowLeft" type="Line2D" parent="PushArrow" unique_id=1220800173]
+rotation = -3.1415927
+points = PackedVector2Array(0, 0, 128, 0)
+closed = true
+
+[node name="Line2D4" type="Line2D" parent="PushArrow/ArrowLeft" unique_id=933110052]
+points = PackedVector2Array(128, 0, 112, -24, 112, 24)
+closed = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

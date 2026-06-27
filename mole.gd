@@ -7,6 +7,8 @@ const SPEED = 300.0
 
 #handle crouching - shrink collision
 var is_crouching:bool = false
+var is_pushing:bool = false
+
 const STAND_HEIGHT:float = 128.0
 const CROUCH_HEIGHT:float =64.0
 
@@ -15,6 +17,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		crouch()
 	else:
 		stand()
+
+	if event.is_action_pressed("ui_accept", true):
+		is_pushing=true
+	else:
+		is_pushing=false
 
 func _ready() -> void:
 	stand()
@@ -36,7 +43,6 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("left", "right")
 	if direction:
 		velocity.x = direction * SPEED

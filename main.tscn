@@ -4,27 +4,31 @@
 [ext_resource type="Texture2D" uid="uid://b5i5eb683x6um" path="res://icon.svg" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://cbhvom5qh7cym" path="res://human.tscn" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://p6nm45b3s4vp" path="res://obstruction.tscn" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dtsm6pmndsces" path="res://wheel.tscn" id="5_lquwl"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g4v7s"]
+distance = -72.0
 
 [node name="Main" type="Node2D" unique_id=573433232]
 script = ExtResource("1_h2yge")
 
 [node name="HomeGarage" type="Node2D" parent="." unique_id=1674834173]
-position = Vector2(-208, -264)
+position = Vector2(-48, 24)
 
 [node name="BGSprite" type="Sprite2D" parent="HomeGarage" unique_id=1501233222]
 self_modulate = Color(0, 0, 0, 1)
-position = Vector2(936, 656.00006)
-scale = Vector2(12.688, 6.995)
+position = Vector2(844, 628.00006)
+scale = Vector2(14.1875, 8.562501)
 texture = ExtResource("1_ig7tw")
+metadata/_edit_lock_ = true
 
 [node name="Floor" type="StaticBody2D" parent="HomeGarage" unique_id=1219181396]
-position = Vector2(680, 1104)
+position = Vector2(680, 896)
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="HomeGarage/Floor" unique_id=742762496]
 self_modulate = Color(0.29709297, 0.29709294, 0.2970929, 1)
-position = Vector2(200, -1.5258789e-05)
+position = Vector2(176, 79.999985)
 scale = Vector2(14.812, 2.389)
 texture = ExtResource("1_ig7tw")
 
@@ -33,48 +37,168 @@ position = Vector2(0, -135.99998)
 shape = SubResource("WorldBoundaryShape2D_g4v7s")
 
 [node name="MoleSpawnL" type="Node2D" parent="HomeGarage" unique_id=2052368292]
-position = Vector2(248, 872)
+position = Vector2(80.000015, 776.00006)
 scale = Vector2(-1.6841433, 1.7996314)
 
 [node name="MoleSpawnR" type="Node2D" parent="HomeGarage" unique_id=292298904]
-position = Vector2(1416, 744)
+position = Vector2(1616, 776)
 
 [node name="LevelExitL" type="Node2D" parent="HomeGarage" unique_id=52358275]
-position = Vector2(152, 864)
+position = Vector2(-64, 776)
 
 [node name="LevelExitR" type="Node2D" parent="HomeGarage" unique_id=1743836125]
-position = Vector2(1584, 736)
+position = Vector2(1744, 776)
 
 [node name="Human" parent="." unique_id=1433248948 instance=ExtResource("3_lquwl")]
+metadata/_edit_lock_ = true
 
-[node name="Obstruction" parent="." unique_id=1476029417 instance=ExtResource("4_lquwl")]
-position = Vector2(208, 616)
+[node name="Obstructions" type="Node2D" parent="." unique_id=791092336]
 
-[node name="Obstruction2" parent="." unique_id=881584193 instance=ExtResource("4_lquwl")]
-position = Vector2(512, 616)
+[node name="Obstruction" parent="Obstructions" unique_id=1476029417 instance=ExtResource("4_lquwl")]
+position = Vector2(328, 768)
 
-[node name="Obstruction3" parent="." unique_id=528042240 instance=ExtResource("4_lquwl")]
-position = Vector2(824, 696)
+[node name="Obstruction2" parent="Obstructions" unique_id=881584193 instance=ExtResource("4_lquwl")]
+position = Vector2(632, 768)
+
+[node name="Obstruction3" parent="Obstructions" unique_id=528042240 instance=ExtResource("4_lquwl")]
+position = Vector2(944, 824)
 scale = Vector2(1, 0.32999998)
 
-[node name="Sprite2D" parent="Obstruction3" index="0" unique_id=1626960914]
+[node name="Sprite2D" parent="Obstructions/Obstruction3" index="0" unique_id=1626960914]
 scale = Vector2(1.48, 2.694971)
 
-[node name="CollisionShape2D" parent="Obstruction3" index="1" unique_id=2131804234]
+[node name="CollisionShape2D" parent="Obstructions/Obstruction3" index="1" unique_id=2131804234]
 position = Vector2(0, -5.722046e-06)
 
-[node name="Obstruction4" parent="." unique_id=1818884657 instance=ExtResource("4_lquwl")]
-position = Vector2(1160, 616)
+[node name="Obstruction4" parent="Obstructions" unique_id=1818884657 instance=ExtResource("4_lquwl")]
+position = Vector2(1280, 768)
 
-[connection signal="body_entered" from="Obstruction" to="." method="_on_obstruction_body_entered"]
-[connection signal="body_exited" from="Obstruction" to="." method="_on_obstruction_body_exited"]
-[connection signal="body_entered" from="Obstruction2" to="." method="_on_obstruction_body_entered"]
-[connection signal="body_exited" from="Obstruction2" to="." method="_on_obstruction_body_exited"]
-[connection signal="body_entered" from="Obstruction3" to="." method="_on_obstruction_body_entered"]
-[connection signal="body_exited" from="Obstruction3" to="." method="_on_obstruction_body_exited"]
-[connection signal="body_entered" from="Obstruction4" to="." method="_on_obstruction_body_entered"]
-[connection signal="body_exited" from="Obstruction4" to="." method="_on_obstruction_body_exited"]
+[node name="Wheel" parent="." unique_id=562400103 instance=ExtResource("5_lquwl")]
+position = Vector2(184, 792)
 
-[editable path="Obstruction2"]
-[editable path="Obstruction3"]
-[editable path="Obstruction4"]
+[node name="Dialogue" type="CanvasLayer" parent="." unique_id=869322453]
+visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="Dialogue" unique_id=1171730690]
+custom_minimum_size = Vector2(1280, 200)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 20
+
+[node name="Panel" type="Panel" parent="Dialogue/MarginContainer" unique_id=1290598637]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Dialogue/MarginContainer/Panel" unique_id=1159749750]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.69411767, 0.5176471, 0.20784314, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Dialogue/MarginContainer/Panel/ColorRect" unique_id=211077884]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -122.0
+offset_right = 122.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Dialogue/MarginContainer/Panel/ColorRect/VBoxContainer" unique_id=1540246563]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Panel2" type="Panel" parent="Dialogue/MarginContainer/Panel/ColorRect/VBoxContainer/HBoxContainer" unique_id=1817927758]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="Sprite2D" type="TextureRect" parent="Dialogue/MarginContainer/Panel/ColorRect/VBoxContainer/HBoxContainer/Panel2" unique_id=1601868116]
+layout_mode = 1
+offset_right = 128.0
+offset_bottom = 160.0
+size_flags_horizontal = 8
+texture = ExtResource("1_ig7tw")
+
+[node name="Label" type="Label" parent="Dialogue/MarginContainer/Panel/ColorRect/VBoxContainer/HBoxContainer" unique_id=703191398]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.47811854, 0, 0.11176927, 1)
+theme_override_font_sizes/font_size = 40
+text = "What do you want for your birthday?"
+
+[node name="Panel" type="Panel" parent="Dialogue/MarginContainer/Panel/ColorRect/VBoxContainer/HBoxContainer" unique_id=313550007]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="Sprite2D" type="TextureRect" parent="Dialogue/MarginContainer/Panel/ColorRect/VBoxContainer/HBoxContainer/Panel" unique_id=1171062595]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_bottom = 160.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+texture = ExtResource("1_ig7tw")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1518943740]
+position = Vector2(216, 128)
+offset = Vector2(640, 360)
+zoom = Vector2(0.75, 0.75)
+
+[node name="ResetLayer" type="CanvasLayer" parent="." unique_id=1720941792]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="ResetLayer" unique_id=1471291820]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.77254903, 0, 0.2, 0.7411765)
+
+[node name="Label" type="Label" parent="ResetLayer/ColorRect" unique_id=171836299]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.5
+offset_top = -41.5
+offset_right = 224.5
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 60
+text = "You got caught!"
+
+[node name="Timer" type="Timer" parent="ResetLayer" unique_id=1699172041]
+wait_time = 2.0
+
+[connection signal="body_entered" from="Obstructions/Obstruction" to="." method="_on_obstruction_body_entered"]
+[connection signal="body_exited" from="Obstructions/Obstruction" to="." method="_on_obstruction_body_exited"]
+[connection signal="body_entered" from="Obstructions/Obstruction2" to="." method="_on_obstruction_body_entered"]
+[connection signal="body_exited" from="Obstructions/Obstruction2" to="." method="_on_obstruction_body_exited"]
+[connection signal="body_entered" from="Obstructions/Obstruction3" to="." method="_on_obstruction_body_entered"]
+[connection signal="body_exited" from="Obstructions/Obstruction3" to="." method="_on_obstruction_body_exited"]
+[connection signal="body_entered" from="Obstructions/Obstruction4" to="." method="_on_obstruction_body_entered"]
+[connection signal="body_exited" from="Obstructions/Obstruction4" to="." method="_on_obstruction_body_exited"]
+[connection signal="timeout" from="ResetLayer/Timer" to="." method="_on_timer_timeout"]
+
+[editable path="Obstructions/Obstruction2"]
+[editable path="Obstructions/Obstruction3"]
+[editable path="Obstructions/Obstruction4"]

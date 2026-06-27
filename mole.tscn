@@ -11,10 +11,10 @@ height = 128.0
 script = ExtResource("1_fo5de")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1691524931]
+self_modulate = Color(0, 0.60938054, 0.5582652, 1)
 position = Vector2(0, 64)
 texture = ExtResource("2_m3rin")
 offset = Vector2(0, -64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1108115408]
-position = Vector2(0, -56)
 shape = SubResource("CapsuleShape2D_g4v7s")

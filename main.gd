@@ -11,20 +11,32 @@ extends Node2D
 var human_state:int
 @export var enter_direction_left:bool=false
 
+var mole_instance
 const MOLE = preload("uid://dno32qrxb21l5")
+@onready var reset_timer: Timer = $ResetLayer/Timer
 
 func _ready() -> void:
 	human.human_action.connect(human_acting)
 	update_human()
 	spawn_mole()
+	$ResetLayer.visible=false
 	
+func _process(_delta: float) -> void:
+	#check if human found you
+	if human_state == 1:
+		if is_hidden:
+			$ResetLayer.visible=false
+		else:
+			$ResetLayer.visible=true
+			reset_timer.start()
+
 func human_acting(action_type)->void:
 	human_state=action_type
 	#print("[main-human acting] current state: " + str(human_state))
 	update_human()
 
 func spawn_mole()->void:
-	var mole_instance = MOLE.instantiate()
+	mole_instance = MOLE.instantiate()
 
 	if enter_direction_left:
 		mole_instance.global_position = mole_spawn_l.global_position
@@ -38,14 +50,11 @@ func update_human()->void:
 	else:
 		is_hidden_sprite.self_modulate = Color.RED
 	
-	#check if human found you
-	if human_state == 1:
-		if is_hidden:
-			print("safe for now")
-		else:
-			print("gotcha!")
-			
-
+func reset_level()->void:
+	mole_instance.queue_free()
+	spawn_mole()
+	$ResetLayer.visible=false
+	
 func _on_obstruction_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
 		is_hidden=true
@@ -55,3 +64,6 @@ func _on_obstruction_body_exited(body: Node2D) -> void:
 	if body is CharacterBody2D:
 		is_hidden=false
 		update_human()
+
+func _on_timer_timeout() -> void:
+	reset_level()

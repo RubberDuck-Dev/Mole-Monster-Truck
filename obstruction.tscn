@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(80, 256)
 
-[node name="Obstruction" type="Area2D" unique_id=1476029417]
+[node name="Obstruction" type="Area2D" unique_id=1476029417 groups=["obstruction"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1626960914]
 position = Vector2(0, -32)
