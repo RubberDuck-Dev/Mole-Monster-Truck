@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://p6nm45b3s4vp"]
 
-[ext_resource type="Texture2D" uid="uid://b5i5eb683x6um" path="res://icon.svg" id="1_q0177"]
+[ext_resource type="Texture2D" uid="uid://c7a3mrk0q3gjs" path="res://art-assets/component-art/bean_can.png" id="1_q0177"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(80, 256)
 
 [node name="Obstruction" type="Area2D" unique_id=1476029417 groups=["obstruction"]]
+collision_mask = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1626960914]
 position = Vector2(0, -32)
-scale = Vector2(1, 2)
 texture = ExtResource("1_q0177")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2131804234]

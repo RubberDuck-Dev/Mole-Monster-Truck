@@ -23,12 +23,13 @@ func _ready() -> void:
 	
 func _process(_delta: float) -> void:
 	#check if human found you
-	if human_state == 1:
-		if is_hidden:
-			$ResetLayer.visible=false
-		else:
-			$ResetLayer.visible=true
-			reset_timer.start()
+	#if human_state == 1:
+		#if is_hidden:
+			#$ResetLayer.visible=false
+		#else:
+			#$ResetLayer.visible=true
+			#reset_timer.start()
+	pass
 
 func human_acting(action_type)->void:
 	human_state=action_type
@@ -56,12 +57,12 @@ func reset_level()->void:
 	$ResetLayer.visible=false
 	
 func _on_obstruction_body_entered(body: Node2D) -> void:
-	if body is CharacterBody2D:
+	if body is CharacterBody2D or body is RigidBody2D:
 		is_hidden=true
 		update_human()
 
 func _on_obstruction_body_exited(body: Node2D) -> void:
-	if body is CharacterBody2D:
+	if body is CharacterBody2D or body is RigidBody2D:
 		is_hidden=false
 		update_human()
 

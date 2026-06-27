@@ -8,6 +8,7 @@ radius = 24.0
 height = 128.0
 
 [node name="Mole" type="CharacterBody2D" unique_id=90298419]
+collision_mask = 10
 script = ExtResource("1_fo5de")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1691524931]
