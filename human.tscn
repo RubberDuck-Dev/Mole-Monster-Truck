@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cbhvom5qh7cym"]
+
+[ext_resource type="Script" uid="uid://cwem3xgg43fqf" path="res://human.gd" id="1_86l0o"]
+[ext_resource type="Texture2D" uid="uid://b5i5eb683x6um" path="res://icon.svg" id="2_f3uon"]
+
+[node name="Human" type="Node2D" unique_id=1433248948]
+script = ExtResource("1_86l0o")
+
+[node name="StateTimer" type="Timer" parent="." unique_id=1444811108]
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=741444632]
+offset_right = 128.0
+offset_bottom = 155.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=43085362]
+layout_mode = 2
+theme_override_constants/separation = 58
+
+[node name="IsSearchingContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1360342404]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/IsSearchingContainer" unique_id=53654289]
+layout_mode = 2
+text = "Is Searching"
+
+[node name="IsSearchingSprite" type="TextureRect" parent="MarginContainer/HBoxContainer/IsSearchingContainer" unique_id=2029641983]
+layout_mode = 2
+texture = ExtResource("2_f3uon")
+
+[node name="IsHiddenContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=2081565329]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/IsHiddenContainer" unique_id=1314437757]
+layout_mode = 2
+text = "Is Hidden"
+
+[node name="IsHiddenSprite" type="TextureRect" parent="MarginContainer/HBoxContainer/IsHiddenContainer" unique_id=1735212249]
+layout_mode = 2
+texture = ExtResource("2_f3uon")
+
+[connection signal="timeout" from="StateTimer" to="." method="_on_state_timer_timeout"]

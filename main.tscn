@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://d3uv4exlc7j0i"]
+
+[ext_resource type="Script" uid="uid://w8udtqi2uuih" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="Texture2D" uid="uid://b5i5eb683x6um" path="res://icon.svg" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://cbhvom5qh7cym" path="res://human.tscn" id="3_lquwl"]
+[ext_resource type="PackedScene" uid="uid://p6nm45b3s4vp" path="res://obstruction.tscn" id="4_lquwl"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g4v7s"]
+
+[node name="Main" type="Node2D" unique_id=573433232]
+script = ExtResource("1_h2yge")
+
+[node name="HomeGarage" type="Node2D" parent="." unique_id=1674834173]
+position = Vector2(-208, -264)
+
+[node name="BGSprite" type="Sprite2D" parent="HomeGarage" unique_id=1501233222]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(936, 656.00006)
+scale = Vector2(12.688, 6.995)
+texture = ExtResource("1_ig7tw")
+
+[node name="Floor" type="StaticBody2D" parent="HomeGarage" unique_id=1219181396]
+position = Vector2(680, 1104)
+
+[node name="Sprite2D" type="Sprite2D" parent="HomeGarage/Floor" unique_id=742762496]
+self_modulate = Color(0.29709297, 0.29709294, 0.2970929, 1)
+position = Vector2(200, -1.5258789e-05)
+scale = Vector2(14.812, 2.389)
+texture = ExtResource("1_ig7tw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HomeGarage/Floor" unique_id=973023289]
+position = Vector2(0, -135.99998)
+shape = SubResource("WorldBoundaryShape2D_g4v7s")
+
+[node name="MoleSpawnL" type="Node2D" parent="HomeGarage" unique_id=2052368292]
+position = Vector2(248, 872)
+scale = Vector2(-1.6841433, 1.7996314)
+
+[node name="MoleSpawnR" type="Node2D" parent="HomeGarage" unique_id=292298904]
+position = Vector2(1416, 744)
+
+[node name="LevelExitL" type="Node2D" parent="HomeGarage" unique_id=52358275]
+position = Vector2(152, 864)
+
+[node name="LevelExitR" type="Node2D" parent="HomeGarage" unique_id=1743836125]
+position = Vector2(1584, 736)
+
+[node name="Human" parent="." unique_id=1433248948 instance=ExtResource("3_lquwl")]
+
+[node name="Obstruction" parent="." unique_id=1476029417 instance=ExtResource("4_lquwl")]
+position = Vector2(208, 616)
+
+[node name="Obstruction2" parent="." unique_id=881584193 instance=ExtResource("4_lquwl")]
+position = Vector2(512, 616)
+
+[node name="Obstruction3" parent="." unique_id=528042240 instance=ExtResource("4_lquwl")]
+position = Vector2(824, 696)
+scale = Vector2(1, 0.32999998)
+
+[node name="Sprite2D" parent="Obstruction3" index="0" unique_id=1626960914]
+scale = Vector2(1.48, 2.694971)
+
+[node name="CollisionShape2D" parent="Obstruction3" index="1" unique_id=2131804234]
+position = Vector2(0, -5.722046e-06)
+
+[node name="Obstruction4" parent="." unique_id=1818884657 instance=ExtResource("4_lquwl")]
+position = Vector2(1160, 616)
+
+[connection signal="body_entered" from="Obstruction" to="." method="_on_obstruction_body_entered"]
+[connection signal="body_exited" from="Obstruction" to="." method="_on_obstruction_body_exited"]
+[connection signal="body_entered" from="Obstruction2" to="." method="_on_obstruction_body_entered"]
+[connection signal="body_exited" from="Obstruction2" to="." method="_on_obstruction_body_exited"]
+[connection signal="body_entered" from="Obstruction3" to="." method="_on_obstruction_body_entered"]
+[connection signal="body_exited" from="Obstruction3" to="." method="_on_obstruction_body_exited"]
+[connection signal="body_entered" from="Obstruction4" to="." method="_on_obstruction_body_entered"]
+[connection signal="body_exited" from="Obstruction4" to="." method="_on_obstruction_body_exited"]
+
+[editable path="Obstruction2"]
+[editable path="Obstruction3"]
+[editable path="Obstruction4"]
