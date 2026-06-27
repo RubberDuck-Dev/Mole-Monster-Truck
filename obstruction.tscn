@@ -6,7 +6,8 @@
 size = Vector2(80, 256)
 
 [node name="Obstruction" type="Area2D" unique_id=1476029417 groups=["obstruction"]]
-collision_mask = 10
+collision_layer = 4
+collision_mask = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1626960914]
 position = Vector2(0, -32)

@@ -11,6 +11,8 @@ var is_crouching:bool = false
 var is_pushing:bool = false
 var is_charging:bool = false
 
+var face_direction=0
+
 const STAND_HEIGHT:float = 128.0
 const CROUCH_HEIGHT:float= 64.0
 
@@ -29,6 +31,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	stand()
+
+func _process(_delta: float) -> void:
+	$Sprite2D.flip_h=face_direction
 
 func crouch():
 	is_crouching=true
@@ -55,5 +60,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * curr_speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, curr_speed)
+
+	if direction>0:
+		face_direction = 1
+	else:
+		face_direction = 0
 
 	move_and_slide()

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://t255el8jcio7" path="res://art-assets/level-art/kitchen_bg.png" id="2_7mycd"]
 [ext_resource type="Texture2D" uid="uid://bmvv6nr3cou50" path="res://art-assets/level-art/kitchen_window_bg.png" id="2_272bh"]
 [ext_resource type="PackedScene" uid="uid://cbhvom5qh7cym" path="res://human.tscn" id="3_lquwl"]
+[ext_resource type="Texture2D" uid="uid://doiko4et5mkxg" path="res://art-assets/component-art/shelf_floor.png" id="4_5vw27"]
 [ext_resource type="PackedScene" uid="uid://p6nm45b3s4vp" path="res://obstruction.tscn" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dtsm6pmndsces" path="res://wheel.tscn" id="5_lquwl"]
 
@@ -44,9 +45,9 @@ metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="HomeGarage/Floor" unique_id=742762496]
 self_modulate = Color(0.29709297, 0.29709294, 0.2970929, 1)
-position = Vector2(176, 79.999985)
-scale = Vector2(14.812, 2.389)
-texture = ExtResource("1_ig7tw")
+position = Vector2(167.99997, 39.999985)
+scale = Vector2(2.6666667, 0.9375)
+texture = ExtResource("4_5vw27")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HomeGarage/Floor" unique_id=973023289]
 position = Vector2(112, -135.99998)

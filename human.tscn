@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://cbhvom5qh7cym"]
 
 [ext_resource type="Script" uid="uid://cwem3xgg43fqf" path="res://human.gd" id="1_86l0o"]
-[ext_resource type="Texture2D" uid="uid://b5i5eb683x6um" path="res://icon.svg" id="2_f3uon"]
+[ext_resource type="Texture2D" uid="uid://dff0jnbnxt327" path="res://art-assets/component-art/search_icon.png" id="2_4qekv"]
+[ext_resource type="Texture2D" uid="uid://brtgyhg2u4cfc" path="res://art-assets/component-art/hide_icon.png" id="3_f3uon"]
 
 [node name="Human" type="Node2D" unique_id=1433248948]
 script = ExtResource("1_86l0o")
@@ -26,10 +27,11 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/IsSearchingContainer" unique_id=53654289]
 layout_mode = 2
 text = "Is Searching"
+horizontal_alignment = 1
 
 [node name="IsSearchingSprite" type="TextureRect" parent="MarginContainer/HBoxContainer/IsSearchingContainer" unique_id=2029641983]
 layout_mode = 2
-texture = ExtResource("2_f3uon")
+texture = ExtResource("2_4qekv")
 
 [node name="IsHiddenContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=2081565329]
 layout_mode = 2
@@ -37,9 +39,10 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/IsHiddenContainer" unique_id=1314437757]
 layout_mode = 2
 text = "Is Hidden"
+horizontal_alignment = 1
 
 [node name="IsHiddenSprite" type="TextureRect" parent="MarginContainer/HBoxContainer/IsHiddenContainer" unique_id=1735212249]
 layout_mode = 2
-texture = ExtResource("2_f3uon")
+texture = ExtResource("3_f3uon")
 
 [connection signal="timeout" from="StateTimer" to="." method="_on_state_timer_timeout"]

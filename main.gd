@@ -23,13 +23,13 @@ func _ready() -> void:
 	
 func _process(_delta: float) -> void:
 	#check if human found you
-	#if human_state == 1:
-		#if is_hidden:
-			#$ResetLayer.visible=false
-		#else:
-			#$ResetLayer.visible=true
-			#reset_timer.start()
-	pass
+	if human_state == 1:
+		if is_hidden:
+			$ResetLayer.visible=false
+		else:
+			$ResetLayer.visible=true
+			reset_timer.start()
+	#pass
 
 func human_acting(action_type)->void:
 	human_state=action_type

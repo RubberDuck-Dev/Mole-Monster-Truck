@@ -9,11 +9,10 @@ extends RigidBody2D
 
 @export var min_push_strength: float = 25.0
 @export var max_push_strength: float = 250.0
+@export var push_strength_amount: float = 5.0
 
 var push_strength: float = 0.0
-var push_strength_amount: float = 5.0
 var push_increment_direction:int = 1 #1 is up, -1 is down
-
 var push_direction:int = 1 #1 is right, -1 is left
 
 var tracking_body:CharacterBody2D
@@ -40,7 +39,7 @@ func _process(_delta: float) -> void:
 			
 			var visual_strength = snapped(push_strength,25.0)
 
-			$PushArrow/Arrow.scale.x = visual_strength * push_direction * 0.02
+			$PushArrow/Arrow.scale.x = visual_strength * push_direction * 0.01
 			$PushArrow.global_rotation=0.0
 			
 			if visual_strength < 50:
@@ -76,7 +75,8 @@ func track_body()->void:
 			push_direction=-1
 
 func push_ball()->void:
-	self.apply_impulse(Vector2(push_strength * push_direction, 0), Vector2(1, 0))
+	var push_impulse = push_strength * 2.0
+	self.apply_impulse(Vector2(push_impulse * push_direction, 0), Vector2(1, 0))
 
 func _on_hiding_area_2d_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:

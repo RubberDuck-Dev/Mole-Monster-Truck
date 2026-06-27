@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dno32qrxb21l5"]
 
 [ext_resource type="Script" uid="uid://bdyvuhqwhpwd8" path="res://mole.gd" id="1_fo5de"]
-[ext_resource type="Texture2D" uid="uid://b5i5eb683x6um" path="res://icon.svg" id="2_m3rin"]
+[ext_resource type="Texture2D" uid="uid://clys6gftonmnj" path="res://art-assets/component-art/mole.png" id="2_fo5de"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
 radius = 24.0
@@ -12,9 +12,9 @@ collision_mask = 10
 script = ExtResource("1_fo5de")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1691524931]
-self_modulate = Color(0, 0.60938054, 0.5582652, 1)
-position = Vector2(0, 64)
-texture = ExtResource("2_m3rin")
+position = Vector2(0, 32)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_fo5de")
 offset = Vector2(0, -64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1108115408]
