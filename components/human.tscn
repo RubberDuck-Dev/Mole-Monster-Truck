@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://cbhvom5qh7cym"]
+
+[ext_resource type="Script" uid="uid://cwem3xgg43fqf" path="res://components/human.gd" id="1_86l0o"]
+[ext_resource type="Texture2D" uid="uid://t255el8jcio7" path="res://art-assets/level-art/kitchen_bg.png" id="2_jqen2"]
+[ext_resource type="Texture2D" uid="uid://b7h6pgwjlu3pw" path="res://art-assets/component-art/eyeball.png" id="3_jqen2"]
+[ext_resource type="Texture2D" uid="uid://d2pa8objekv3y" path="res://art-assets/component-art/retina.png" id="4_tygoa"]
+[ext_resource type="Texture2D" uid="uid://cl4siyea3qot" path="res://art-assets/component-art/pupil.png" id="5_s4iro"]
+
+[sub_resource type="Gradient" id="Gradient_tygoa"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f3uon"]
+gradient = SubResource("Gradient_tygoa")
+width = 512
+height = 512
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4qekv"]
+gradient = SubResource("Gradient_tygoa")
+width = 512
+height = 512
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Animation" id="Animation_f3uon"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Eyeball/Retina:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Eyeball/Retina/Pupil:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4qekv"]
+resource_name = "idle"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Eyeball/Retina:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-10, 5), Vector2(1, 1), Vector2(10, 5), Vector2(1, 1), Vector2(-10, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Eyeball/Retina/Pupil:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-5, 5), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0), Vector2(-5, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_jqen2"]
+resource_name = "locked_in_focus"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jqen2"]
+_data = {
+&"RESET": SubResource("Animation_f3uon"),
+&"idle": SubResource("Animation_4qekv"),
+&"locked_in_focus": SubResource("Animation_jqen2")
+}
+
+[node name="Human" type="Node2D" unique_id=1433248948]
+script = ExtResource("1_86l0o")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=74335760]
+visible = false
+scale = Vector2(4, 4)
+texture = ExtResource("2_jqen2")
+
+[node name="StateTimer" type="Timer" parent="." unique_id=1444811108]
+
+[node name="Eyeball" type="Sprite2D" parent="." unique_id=59561894]
+rotation = -0.08726646
+scale = Vector2(2, 2)
+texture = ExtResource("3_jqen2")
+offset = Vector2(-16, 39)
+
+[node name="Retina" type="Sprite2D" parent="Eyeball" unique_id=159332646]
+texture = ExtResource("4_tygoa")
+offset = Vector2(-15, 41)
+
+[node name="Pupil" type="Sprite2D" parent="Eyeball/Retina" unique_id=396672705]
+texture = ExtResource("5_s4iro")
+offset = Vector2(-17.5, 39.5)
+
+[node name="PointLightNode" type="Node2D" parent="Eyeball" unique_id=1529932170]
+scale = Vector2(1, 2)
+
+[node name="PointLight2D2" type="PointLight2D" parent="Eyeball/PointLightNode" unique_id=1165997135]
+energy = 4.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_f3uon")
+offset = Vector2(-255.67891, 256.04422)
+
+[node name="PointLight2D" type="PointLight2D" parent="Eyeball/PointLightNode" unique_id=2570911]
+energy = 4.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_4qekv")
+offset = Vector2(256.0392, 255.04422)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=465826566]
+libraries/ = SubResource("AnimationLibrary_jqen2")
+autoplay = &"idle"
+
+[connection signal="timeout" from="StateTimer" to="." method="_on_state_timer_timeout"]

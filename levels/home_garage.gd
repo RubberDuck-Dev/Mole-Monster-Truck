@@ -1,16 +1,12 @@
 extends Node2D
 
-#@onready var is_hidden_sprite: TextureRect = $Dialogue/HidingStatusUI/HBoxContainer/IsHiddenContainer/IsHiddenSprite
-#@onready var is_searching_sprite: TextureRect = $Dialogue/HidingStatusUI/HBoxContainer/IsSearchingContainer/IsSearchingSprite
+@onready var mole_spawn_l: Node2D = $SpawnPoints/MoleSpawnL
+@onready var mole_spawn_r: Node2D = $SpawnPoints/MoleSpawnR
 
-@onready var mole_spawn_l: Node2D = $HomeGarage/SpawnPoints/MoleSpawnL
-@onready var mole_spawn_r: Node2D = $HomeGarage/SpawnPoints/MoleSpawnR
+@onready var human_path_2d: Path2D = $SpawnPoints/HumanPath2D
+@onready var path_follow_2d: PathFollow2D = $SpawnPoints/HumanPath2D/PathFollow2D
 
-@onready var human_path_2d: Path2D = $HomeGarage/SpawnPoints/HumanPath2D
-@onready var path_follow_2d: PathFollow2D = $HomeGarage/SpawnPoints/HumanPath2D/PathFollow2D
-
-@onready var wheel_spawn: Node2D = $HomeGarage/SpawnPoints/WheelSpawn
-
+@onready var wheel_spawn: Node2D = $SpawnPoints/WheelSpawn
 
 @export var is_hidden:bool=false
 var human_state:int
@@ -27,7 +23,8 @@ const MOLE = preload("uid://dno32qrxb21l5")
 var wheel_instance
 const WHEEL = preload("uid://dtsm6pmndsces")
 
-@onready var reset_timer: Timer = $HomeGarage/ResetTimer
+@onready var reset_timer: Timer = $ResetTimer
+var _can_exit:bool = false
 
 func _ready() -> void:
 	#var from_left: bool = GameManager.spawn_on_left
@@ -37,24 +34,27 @@ func _ready() -> void:
 	spawn_mole()
 	spawn_wheel()
 	update_human()
-	#$ResetLayer.visible=false
 	connect_obstructions()
+	#$ResetLayer.visible=false
 	#GameManager.current_level_idx=0
+	await get_tree().create_timer(0.4).timeout
+	_can_exit = true
 	
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	#check if human found you
 	if human_state == 1:
 		if is_hidden:
-			$ResetLayer.visible=false
+			HUD.show_caught(false)
 		else:
 			#human found you!
-			look_at_mole()
-			$ResetLayer.visible=true
+			look_at_mole(delta)
+			HUD.show_caught(true)
+			#$ResetLayer.visible=true
 			reset_timer.start()
 
 func connect_obstructions()->void:
 	#for the current level, loop and connect signals
-	for o in $HomeGarage/Obstructions.get_children():
+	for o in $Obstructions.get_children():
 		o.body_entered.connect(_on_obstruction_body_entered)
 		o.body_exited.connect(_on_obstruction_body_exited)
 
@@ -109,22 +109,23 @@ func update_human()->void:
 	else:
 		HUD.set_hidden(false)
 
-func look_at_mole()->void:
-	if mole_instance == null:
-		return
-	var target: Vector2 = mole_instance.global_position
+func look_at_mole(delta) -> void:
+	if mole_instance == null: return
+	var to_mole = human_instance.global_position.direction_to(mole_instance.global_position)
+	var target = to_mole.angle() - PI/2
+	human_instance.global_rotation = lerp_angle(human_instance.global_rotation, target, 8.0*delta)
 
-	var target_angle = human_instance.global_position.direction_to(target).angle()
-	human_instance.global_rotation = lerp_angle(global_rotation, target_angle, 1.0)
-	
 func reset_level()->void:
+	HUD.show_caught(false)
 	human_instance.queue_free()
 	spawn_human()
 	mole_instance.queue_free()
 	spawn_mole()
-	wheel_instance.queue_free()
-	spawn_wheel()
-	$ResetLayer.visible=false
+	if wheel_instance:
+		wheel_instance.queue_free()
+		spawn_wheel()
+
+	#$ResetLayer.visible=false
 	
 func _on_obstruction_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D or body is RigidBody2D:
@@ -136,15 +137,23 @@ func _on_obstruction_body_exited(body: Node2D) -> void:
 		is_hidden=false
 		update_human()
 
-func _on_timer_timeout() -> void:
+func _on_reset_timer_timeout() -> void:
 	reset_level()
 
 func _on_level_exit_r_body_entered(body)->void:
-	if body == mole_instance:
+	if _can_exit and body == mole_instance:
 		print("calling load_level: 1")
-		GameManager.load_level(1)
+		GameManager.load_level.call_deferred(1)
+	if body == wheel_instance:
+		HUD.show_success(true)
+		GameManager.part_collected = true
+		wheel_instance.queue_free()
 
 func _on_level_exit_l_body_entered(body)->void:
-	if body == mole_instance:
+	if _can_exit and body == mole_instance:
 		print("calling load_level: -1")
-		GameManager.load_level(-1)
+		GameManager.load_level.call_deferred(-1)
+	if body == wheel_instance:
+		HUD.show_success(true)
+		GameManager.part_collected = true
+		wheel_instance.queue_free()

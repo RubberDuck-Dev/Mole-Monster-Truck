@@ -10,9 +10,8 @@ var current_state: State = State.DELAY
 @export var warning_time: float = 5.0
 
 @onready var timer: Timer = $StateTimer
-@onready var point_light: PointLight2D = $Sprite2D/PointLightNode/PointLight2D
-@onready var point_light_2: PointLight2D = $Sprite2D/PointLightNode/PointLight2D2
-
+@onready var point_light: PointLight2D = $Eyeball/PointLightNode/PointLight2D
+@onready var point_light_2: PointLight2D = $Eyeball/PointLightNode/PointLight2D2
 
 signal human_action
 
@@ -31,12 +30,20 @@ func enter_state(new_state: State) -> void:
 			timer.start(delay_time)
 		State.RED_LIGHT:
 			#print("searching")
+			var tween = create_tween()
+			tween.tween_property($Eyeball/Retina/Pupil,"scale",Vector2(2,2),0.5).set_trans(Tween.TRANS_ELASTIC)
 			timer.start(search_light_time)
 		State.WARNING:
 			#print("near countdown")
+			var tween = create_tween()
+			tween.tween_property($Eyeball/Retina/Pupil,"scale",Vector2(1.5,1.5),0.5).set_trans(Tween.TRANS_ELASTIC)
+			
 			timer.start(warning_time)
 		State.GREEN_LIGHT:
 			#print("waiting")
+			var tween = create_tween()
+			tween.tween_property($Eyeball/Retina/Pupil,"scale",Vector2(1,1),0.5).set_trans(Tween.TRANS_ELASTIC)
+
 			var wait_rand_time = wait_light_time.pick_random()
 			timer.start(wait_rand_time)
 

@@ -7,9 +7,9 @@ extends RigidBody2D
 	#queue_free when entered and logged as "collected"
 	#so that the next level will spawn it in to push further
 
-@export var min_push_strength: float = 25.0
-@export var max_push_strength: float = 250.0
-@export var push_strength_amount: float = 5.0
+@export var min_push_strength: float = 50.0
+@export var max_push_strength: float = 400.0
+@export var push_strength_amount: float = 25.0
 
 var push_strength: float = 0.0
 var push_increment_direction:int = 1 #1 is up, -1 is down
@@ -24,6 +24,7 @@ func _process(_delta: float) -> void:
 	track_body()
 
 	if tracking_body:
+		$PushArrow.visible = true
 		if tracking_body.is_charging:
 			$PushArrow.visible = true
 #			print("[track_body] charging..." + str(push_strength))

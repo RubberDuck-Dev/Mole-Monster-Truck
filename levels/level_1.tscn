@@ -1,10 +1,14 @@
-[gd_scene format=3 uid="uid://d2gw6bjytie66"]
+[gd_scene format=3 uid="uid://b855fqjddg7iv"]
 
-[ext_resource type="Texture2D" uid="uid://bmvv6nr3cou50" path="res://art-assets/level-art/kitchen_window_bg.png" id="1_5xtxj"]
-[ext_resource type="Texture2D" uid="uid://t255el8jcio7" path="res://art-assets/level-art/kitchen_bg.png" id="2_1e0ng"]
-[ext_resource type="Texture2D" uid="uid://doiko4et5mkxg" path="res://art-assets/component-art/shelf_floor.png" id="3_mceua"]
-[ext_resource type="PackedScene" uid="uid://p6nm45b3s4vp" path="res://obstruction.tscn" id="4_xigm6"]
-[ext_resource type="Script" uid="uid://cpfcpqjd08voh" path="res://human_follow.gd" id="5_fsh1v"]
+[ext_resource type="Script" uid="uid://bxu7gbgxvtkvl" path="res://levels/home_garage.gd" id="1_5hph3"]
+[ext_resource type="Texture2D" uid="uid://bmvv6nr3cou50" path="res://art-assets/level-art/kitchen_window_bg.png" id="2_j7kpp"]
+[ext_resource type="Texture2D" uid="uid://t255el8jcio7" path="res://art-assets/level-art/kitchen_bg.png" id="3_bjebc"]
+[ext_resource type="Texture2D" uid="uid://doiko4et5mkxg" path="res://art-assets/component-art/shelf_floor.png" id="4_5rr72"]
+[ext_resource type="PackedScene" uid="uid://p6nm45b3s4vp" path="res://components/obstruction.tscn" id="5_gyffv"]
+[ext_resource type="Script" uid="uid://cpfcpqjd08voh" path="res://components/human_follow.gd" id="6_1pe0h"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5hph3"]
+polygon = PackedVector2Array(-357.33334, 64, 357.33334, 53.333313, 358.66666, 128, -360, 128)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g4v7s"]
 distance = -72.0
@@ -17,11 +21,13 @@ size = Vector2(418, 704)
 
 [sub_resource type="Curve2D" id="Curve2D_4c57u"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -696, 464, 0, 0, 0, 0, 520, 360, 0, 0, 0, 0, 1024, 512, 0, 0, 0, 0, 2184, 376, 0, 0, 0, 0, 208, 456, 0, 0, 0, 0, 2560, 488)
+"points": PackedVector2Array(0, 0, 0, 0, -968, 464, 0, 0, 0, 0, -136, 192, 0, 0, 0, 0, 200, -24, 0, 0, 0, 0, 584, 248, 0, 0, 0, 0, 1080, 632, 0, 0, 0, 0, 1440, 328, 0, 0, 0, 0, 1920, 168, 0, 0, 0, 0, 2248, 288, 0, 0, 0, 0, 2752, 264)
 }
-point_count = 6
+point_count = 9
 
-[node name="HomeGarage" type="Node2D" unique_id=1916670072]
+[node name="Level1" type="Node2D" unique_id=1916670072]
+script = ExtResource("1_5hph3")
+enter_direction_left = true
 metadata/_edit_lock_ = true
 
 [node name="BackgroundArt" type="Node2D" parent="." unique_id=336444561]
@@ -32,7 +38,7 @@ metadata/_edit_lock_ = true
 [node name="BGSprite" type="Sprite2D" parent="BackgroundArt/Parallax2D" unique_id=1920600567]
 position = Vector2(848, 528)
 scale = Vector2(3.5, 3.5)
-texture = ExtResource("1_5xtxj")
+texture = ExtResource("2_j7kpp")
 metadata/_edit_lock_ = true
 
 [node name="Parallax2D2" type="Parallax2D" parent="BackgroundArt" unique_id=1380820689]
@@ -40,7 +46,7 @@ metadata/_edit_lock_ = true
 [node name="BGSprite" type="Sprite2D" parent="BackgroundArt/Parallax2D2" unique_id=2063803501]
 position = Vector2(848, 528)
 scale = Vector2(3.5, 3.5)
-texture = ExtResource("2_1e0ng")
+texture = ExtResource("3_bjebc")
 metadata/_edit_lock_ = true
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=908114563]
@@ -53,7 +59,10 @@ metadata/_edit_lock_ = true
 self_modulate = Color(0.29709297, 0.29709294, 0.2970929, 1)
 position = Vector2(167.99997, 95.999985)
 scale = Vector2(6, 1.5)
-texture = ExtResource("3_mceua")
+texture = ExtResource("4_5rr72")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Floor/Sprite2D" unique_id=1227552798]
+occluder = SubResource("OccluderPolygon2D_5hph3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=868609577]
 position = Vector2(112, -135.99998)
@@ -62,22 +71,19 @@ shape = SubResource("WorldBoundaryShape2D_g4v7s")
 [node name="Obstructions" type="Node2D" parent="." unique_id=488919931]
 z_index = 3
 
-[node name="Obstruction" parent="Obstructions" unique_id=1476029417 instance=ExtResource("4_xigm6")]
+[node name="Obstruction" parent="Obstructions" unique_id=1476029417 instance=ExtResource("5_gyffv")]
 position = Vector2(80, 768)
 
-[node name="Obstruction2" parent="Obstructions" unique_id=2088114378 instance=ExtResource("4_xigm6")]
+[node name="Obstruction2" parent="Obstructions" unique_id=2088114378 instance=ExtResource("5_gyffv")]
 position = Vector2(712, 752)
 
-[node name="Obstruction5" parent="Obstructions" unique_id=446978572 instance=ExtResource("4_xigm6")]
-position = Vector2(-528, 752)
+[node name="Obstruction5" parent="Obstructions" unique_id=446978572 instance=ExtResource("5_gyffv")]
+position = Vector2(-704, 752)
 
-[node name="Obstruction6" parent="Obstructions" unique_id=1325233947 instance=ExtResource("4_xigm6")]
-position = Vector2(1680, 720)
-
-[node name="Obstruction7" parent="Obstructions" unique_id=1724311499 instance=ExtResource("4_xigm6")]
+[node name="Obstruction7" parent="Obstructions" unique_id=1724311499 instance=ExtResource("5_gyffv")]
 position = Vector2(2072, 776)
 
-[node name="Obstruction8" parent="Obstructions" unique_id=7420098 instance=ExtResource("4_xigm6")]
+[node name="Obstruction8" parent="Obstructions" unique_id=7420098 instance=ExtResource("5_gyffv")]
 position = Vector2(2744, 744)
 
 [node name="SpawnPoints" type="Node2D" parent="." unique_id=1057099240]
@@ -91,10 +97,11 @@ scale = Vector2(1.6841433, -1.7996314)
 position = Vector2(2856, 632)
 
 [node name="WheelSpawn" type="Node2D" parent="SpawnPoints" unique_id=1509618304]
-position = Vector2(1168, 840)
+position = Vector2(1416, 832)
 
 [node name="LevelExitL" type="Area2D" parent="SpawnPoints" unique_id=1882009916]
-position = Vector2(-1544, 608)
+position = Vector2(-1504, 600)
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnPoints/LevelExitL" unique_id=286392809]
 shape = SubResource("RectangleShape2D_yf5fn")
@@ -102,6 +109,7 @@ debug_color = Color(0.90395904, 0.00014689505, 0.7531044, 0.41960785)
 
 [node name="LevelExitR" type="Area2D" parent="SpawnPoints" unique_id=1861058172]
 position = Vector2(3072, 632)
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnPoints/LevelExitR" unique_id=636279842]
 shape = SubResource("RectangleShape2D_g4v7s")
@@ -112,12 +120,21 @@ position = Vector2(48, -160)
 curve = SubResource("Curve2D_4c57u")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="SpawnPoints/HumanPath2D" unique_id=1642163347]
-position = Vector2(-696, 464)
-rotation = -0.08531869
+position = Vector2(-968, 464)
+rotation = -0.31597027
 loop = false
-script = ExtResource("5_fsh1v")
+script = ExtResource("6_1pe0h")
+
+[node name="ResetTimer" type="Timer" parent="." unique_id=1441678498]
+one_shot = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=624462843]
+color = Color(0.18406272, 0.8157818, 0.86119276, 1)
+
+[connection signal="body_entered" from="SpawnPoints/LevelExitL" to="." method="_on_level_exit_l_body_entered"]
+[connection signal="body_entered" from="SpawnPoints/LevelExitR" to="." method="_on_level_exit_r_body_entered"]
+[connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]
 
 [editable path="Obstructions/Obstruction2"]
 [editable path="Obstructions/Obstruction5"]
-[editable path="Obstructions/Obstruction6"]
 [editable path="Obstructions/Obstruction7"]

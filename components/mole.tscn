@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://dno32qrxb21l5"]
+
+[ext_resource type="Script" uid="uid://bdyvuhqwhpwd8" path="res://components/mole.gd" id="1_fo5de"]
+[ext_resource type="Texture2D" uid="uid://clys6gftonmnj" path="res://art-assets/component-art/mole.png" id="2_fo5de"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
+radius = 24.0
+height = 208.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fo5de"]
+radius = 24.0
+height = 144.0
+
+[sub_resource type="Animation" id="Animation_fo5de"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.08726646]
+}
+
+[sub_resource type="Animation" id="Animation_m3rin"]
+resource_name = "walk_left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.08726646]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ecm7r"]
+_data = {
+&"RESET": SubResource("Animation_fo5de"),
+&"walk": SubResource("Animation_m3rin")
+}
+
+[node name="Mole" type="CharacterBody2D" unique_id=90298419]
+z_index = 3
+collision_mask = 10
+script = ExtResource("1_fo5de")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1691524931]
+rotation = -0.08726646
+texture = ExtResource("2_fo5de")
+
+[node name="StandCollisionShape" type="CollisionShape2D" parent="." unique_id=1108115408]
+shape = SubResource("CapsuleShape2D_g4v7s")
+
+[node name="CrouchCollisionShape" type="CollisionShape2D" parent="." unique_id=26342414]
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_fo5de")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=62497905]
+libraries/ = SubResource("AnimationLibrary_ecm7r")
+autoplay = &"walk"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1041171932]
+position_smoothing_enabled = true
