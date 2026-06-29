@@ -32,17 +32,19 @@ func enter_state(new_state: State) -> void:
 			#print("searching")
 			var tween = create_tween()
 			tween.tween_property($Eyeball/Retina/Pupil,"scale",Vector2(2,2),0.5).set_trans(Tween.TRANS_ELASTIC)
+			AudioManager.play_sfx("human_search")
 			timer.start(search_light_time)
 		State.WARNING:
 			#print("near countdown")
 			var tween = create_tween()
 			tween.tween_property($Eyeball/Retina/Pupil,"scale",Vector2(1.5,1.5),0.5).set_trans(Tween.TRANS_ELASTIC)
-			
+#			AudioManager.play_sfx("human_countdown")			
 			timer.start(warning_time)
 		State.GREEN_LIGHT:
 			#print("waiting")
 			var tween = create_tween()
 			tween.tween_property($Eyeball/Retina/Pupil,"scale",Vector2(1,1),0.5).set_trans(Tween.TRANS_ELASTIC)
+			AudioManager.play_sfx("human_idle")
 
 			var wait_rand_time = wait_light_time.pick_random()
 			timer.start(wait_rand_time)

@@ -17,7 +17,6 @@ var face_direction=0
 const STAND_HEIGHT:float = 128.0
 const CROUCH_HEIGHT:float= 64.0
 
-
 func _ready() -> void:
 	stand()
 
@@ -47,6 +46,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("ui_accept", true):
 		is_pushing=true
 		is_charging=true
+#		AudioManager.play_sfx("mole_push")
 	else:
 		is_pushing=false
 		is_charging=false

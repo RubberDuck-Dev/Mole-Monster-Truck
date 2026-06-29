@@ -24,6 +24,7 @@ var wheel_instance
 const WHEEL = preload("uid://dtsm6pmndsces")
 
 @onready var reset_timer: Timer = $ResetTimer
+var _is_caught:bool = false
 var _can_exit:bool = false
 
 func _ready() -> void:
@@ -39,6 +40,7 @@ func _ready() -> void:
 	#GameManager.current_level_idx=0
 	await get_tree().create_timer(0.4).timeout
 	_can_exit = true
+#	AudioManager.play_music("level_0")
 	
 func _process(delta: float) -> void:
 	#check if human found you
@@ -48,9 +50,12 @@ func _process(delta: float) -> void:
 		else:
 			#human found you!
 			look_at_mole(delta)
-			HUD.show_caught(true)
-			#$ResetLayer.visible=true
-			reset_timer.start()
+			if not _is_caught:
+#				AudioManager.play_sfx("caught")
+				_is_caught=true
+				HUD.show_caught(true)
+				#$ResetLayer.visible=true
+				reset_timer.start()
 
 func connect_obstructions()->void:
 	#for the current level, loop and connect signals
@@ -138,6 +143,7 @@ func _on_obstruction_body_exited(body: Node2D) -> void:
 		update_human()
 
 func _on_reset_timer_timeout() -> void:
+	_is_caught=false
 	reset_level()
 
 func _on_level_exit_r_body_entered(body)->void:
@@ -145,6 +151,7 @@ func _on_level_exit_r_body_entered(body)->void:
 		print("calling load_level: 1")
 		GameManager.load_level.call_deferred(1)
 	if body == wheel_instance:
+#		AudioManager.play_sfx("collected")
 		HUD.show_success(true)
 		GameManager.part_collected = true
 		wheel_instance.queue_free()
@@ -154,6 +161,7 @@ func _on_level_exit_l_body_entered(body)->void:
 		print("calling load_level: -1")
 		GameManager.load_level.call_deferred(-1)
 	if body == wheel_instance:
+#		AudioManager.play_sfx("collected")
 		HUD.show_success(true)
 		GameManager.part_collected = true
 		wheel_instance.queue_free()

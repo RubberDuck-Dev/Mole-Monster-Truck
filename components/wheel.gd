@@ -78,6 +78,7 @@ func track_body()->void:
 func push_ball()->void:
 	var push_impulse = push_strength * 2.0
 	self.apply_impulse(Vector2(push_impulse * push_direction, 0), Vector2(1, 0))
+#	AudioManager.play_sfx("wheel_roll")
 
 func _on_hiding_area_2d_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:

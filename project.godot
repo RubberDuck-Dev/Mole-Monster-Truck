@@ -11,14 +11,15 @@ config_version=5
 [application]
 
 config/name="MoleMonsterTruck"
-run/main_scene="uid://d3uv4exlc7j0i"
+run/main_scene="uid://d2gw6bjytie66"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://art-assets/component-art/icon.svg"
 
 [autoload]
 
 GameManager="*uid://uaxks71tn58x"
 HUD="*uid://dxk4osqmx8a0o"
+AudioManager="*uid://bqhg2n0gdkdmd"
 
 [display]
 

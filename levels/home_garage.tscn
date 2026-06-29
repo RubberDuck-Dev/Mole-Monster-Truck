@@ -10,6 +10,9 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g4v7s"]
 distance = -72.0
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vlnuv"]
+polygon = PackedVector2Array(-357.33334, 64, 357.33334, 53.333313, 358.66666, 128, -360, 128)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
 size = Vector2(489, 669)
 
@@ -24,6 +27,7 @@ point_count = 6
 
 [node name="HomeGarage" type="Node2D" unique_id=1916670072]
 script = ExtResource("1_vlnuv")
+is_hidden = true
 enter_direction_left = true
 metadata/_edit_lock_ = true
 
@@ -61,6 +65,11 @@ texture = ExtResource("4_xe1qq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=868609577]
 position = Vector2(112, -135.99998)
 shape = SubResource("WorldBoundaryShape2D_g4v7s")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Floor" unique_id=959022615]
+position = Vector2(168, 96)
+scale = Vector2(6, 1.5)
+occluder = SubResource("OccluderPolygon2D_vlnuv")
 
 [node name="Obstructions" type="Node2D" parent="." unique_id=488919931]
 z_index = 3
