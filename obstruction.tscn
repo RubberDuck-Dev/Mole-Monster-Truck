@@ -5,14 +5,24 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(80, 256)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_g4v7s"]
+polygon = PackedVector2Array(-116, -160, 56, -160, 64, 80, -116, 80)
+
 [node name="Obstruction" type="Area2D" unique_id=1476029417 groups=["obstruction"]]
 collision_layer = 4
 collision_mask = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1626960914]
 position = Vector2(0, -32)
+scale = Vector2(2, 2)
 texture = ExtResource("1_q0177")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2131804234]
 position = Vector2(0, -32)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=208300172]
+position = Vector2(40, 48)
+scale = Vector2(2, 2)
+occluder = SubResource("OccluderPolygon2D_g4v7s")
