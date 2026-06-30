@@ -1,17 +1,27 @@
 [gd_scene format=3 uid="uid://d2gw6bjytie66"]
 
 [ext_resource type="Script" uid="uid://bxu7gbgxvtkvl" path="res://levels/home_garage.gd" id="1_vlnuv"]
-[ext_resource type="Texture2D" uid="uid://bmvv6nr3cou50" path="res://art-assets/level-art/kitchen_window_bg.png" id="2_4d72q"]
-[ext_resource type="Texture2D" uid="uid://t255el8jcio7" path="res://art-assets/level-art/kitchen_bg.png" id="3_i5lcu"]
+[ext_resource type="Texture2D" uid="uid://d1v3up6gq7g20" path="res://art-assets/component-art/home_bg.png" id="2_vlnuv"]
+[ext_resource type="Texture2D" uid="uid://cbg4lftn18kom" path="res://art-assets/component-art/monster_truck.png" id="3_4d72q"]
+[ext_resource type="Texture2D" uid="uid://b6su3m2c3pw7o" path="res://art-assets/component-art/mole2_bed.png" id="3_i5lcu"]
+[ext_resource type="Texture2D" uid="uid://baw7ugn0w87yc" path="res://art-assets/component-art/wheel.png" id="4_i5lcu"]
 [ext_resource type="Texture2D" uid="uid://doiko4et5mkxg" path="res://art-assets/component-art/shelf_floor.png" id="4_xe1qq"]
-[ext_resource type="PackedScene" uid="uid://p6nm45b3s4vp" path="res://components/obstruction.tscn" id="5_3s5v7"]
 [ext_resource type="Script" uid="uid://cpfcpqjd08voh" path="res://components/human_follow.gd" id="6_ow25y"]
+
+[sub_resource type="Gradient" id="Gradient_4d72q"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g4v7s"]
+gradient = SubResource("Gradient_4d72q")
+width = 128
+height = 128
+fill_from = Vector2(0.47416413, 0.5167173)
+fill_to = Vector2(1, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g4v7s"]
 distance = -72.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vlnuv"]
-polygon = PackedVector2Array(-357.33334, 64, 357.33334, 53.333313, 358.66666, 128, -360, 128)
+polygon = PackedVector2Array(-358.6667, -117.333374, 358.66666, -128, 358.66666, 128, -360, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
 size = Vector2(489, 669)
@@ -28,27 +38,47 @@ point_count = 6
 [node name="HomeGarage" type="Node2D" unique_id=1916670072]
 script = ExtResource("1_vlnuv")
 is_hidden = true
-enter_direction_left = true
+can_spawn_human = false
+can_spawn_wheel = false
+can_spawn_obstructions = false
 metadata/_edit_lock_ = true
 
 [node name="BackgroundArt" type="Node2D" parent="." unique_id=336444561]
-metadata/_edit_lock_ = true
 
-[node name="Parallax2D" type="Parallax2D" parent="BackgroundArt" unique_id=1974454524]
+[node name="BGSprite" type="Sprite2D" parent="BackgroundArt" unique_id=1374218362]
+position = Vector2(976, -336)
+texture = ExtResource("2_vlnuv")
+flip_h = true
 
-[node name="BGSprite" type="Sprite2D" parent="BackgroundArt/Parallax2D" unique_id=1920600567]
-position = Vector2(848, 528)
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("2_4d72q")
-metadata/_edit_lock_ = true
-
-[node name="Parallax2D2" type="Parallax2D" parent="BackgroundArt" unique_id=1380820689]
-
-[node name="BGSprite" type="Sprite2D" parent="BackgroundArt/Parallax2D2" unique_id=2063803501]
-position = Vector2(848, 528)
-scale = Vector2(3.5, 3.5)
+[node name="MoleBed" type="Sprite2D" parent="BackgroundArt" unique_id=650813001]
+position = Vector2(1544.0001, 416.00003)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_i5lcu")
-metadata/_edit_lock_ = true
+flip_h = true
+
+[node name="MonsterTruck" type="Sprite2D" parent="BackgroundArt" unique_id=199098043]
+position = Vector2(360, 424.00003)
+scale = Vector2(3, 3)
+texture = ExtResource("3_4d72q")
+
+[node name="Wheel1" type="Sprite2D" parent="BackgroundArt/MonsterTruck" unique_id=46831573]
+visible = false
+position = Vector2(142, 88)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_i5lcu")
+
+[node name="Wheel2" type="Sprite2D" parent="BackgroundArt/MonsterTruck" unique_id=1386720881]
+visible = false
+position = Vector2(-136, 88)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_i5lcu")
+
+[node name="PointLight2D" type="PointLight2D" parent="BackgroundArt" unique_id=2082402258]
+position = Vector2(2000.4336, 492)
+scale = Vector2(2.381776, 4.9375)
+color = Color(0.99494237, 0.78914934, 0.56671625, 1)
+energy = 5.0
+texture = SubResource("GradientTexture2D_g4v7s")
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=908114563]
 position = Vector2(680, 896)
@@ -71,27 +101,6 @@ position = Vector2(168, 96)
 scale = Vector2(6, 1.5)
 occluder = SubResource("OccluderPolygon2D_vlnuv")
 
-[node name="Obstructions" type="Node2D" parent="." unique_id=488919931]
-z_index = 3
-
-[node name="Obstruction" parent="Obstructions" unique_id=1476029417 instance=ExtResource("5_3s5v7")]
-position = Vector2(80, 768)
-
-[node name="Obstruction2" parent="Obstructions" unique_id=2088114378 instance=ExtResource("5_3s5v7")]
-position = Vector2(712, 752)
-
-[node name="Obstruction5" parent="Obstructions" unique_id=446978572 instance=ExtResource("5_3s5v7")]
-position = Vector2(-528, 752)
-
-[node name="Obstruction6" parent="Obstructions" unique_id=1325233947 instance=ExtResource("5_3s5v7")]
-position = Vector2(1680, 720)
-
-[node name="Obstruction7" parent="Obstructions" unique_id=1724311499 instance=ExtResource("5_3s5v7")]
-position = Vector2(2072, 776)
-
-[node name="Obstruction8" parent="Obstructions" unique_id=7420098 instance=ExtResource("5_3s5v7")]
-position = Vector2(2744, 744)
-
 [node name="SpawnPoints" type="Node2D" parent="." unique_id=1057099240]
 
 [node name="MoleSpawnL" type="Node2D" parent="SpawnPoints" unique_id=1273875179]
@@ -100,12 +109,14 @@ rotation = 3.1415927
 scale = Vector2(1.6841433, -1.7996314)
 
 [node name="MoleSpawnR" type="Node2D" parent="SpawnPoints" unique_id=1310287082]
-position = Vector2(2856, 632)
+position = Vector2(424, 640)
 
 [node name="WheelSpawn" type="Node2D" parent="SpawnPoints" unique_id=1509618304]
+visible = false
 position = Vector2(1168, 840)
 
 [node name="LevelExitL" type="Area2D" parent="SpawnPoints" unique_id=1882009916]
+visible = false
 position = Vector2(-1504, 600)
 collision_mask = 5
 
@@ -114,7 +125,7 @@ shape = SubResource("RectangleShape2D_yf5fn")
 debug_color = Color(0.90395904, 0.00014689505, 0.7531044, 0.41960785)
 
 [node name="LevelExitR" type="Area2D" parent="SpawnPoints" unique_id=1861058172]
-position = Vector2(3072, 632)
+position = Vector2(2232, 600)
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnPoints/LevelExitR" unique_id=636279842]
@@ -122,6 +133,7 @@ shape = SubResource("RectangleShape2D_g4v7s")
 debug_color = Color(0.9607939, 2.9841065e-06, 0.51674795, 0.41960785)
 
 [node name="HumanPath2D" type="Path2D" parent="SpawnPoints" unique_id=1111128631]
+visible = false
 position = Vector2(-8, -200)
 curve = SubResource("Curve2D_4c57u")
 
@@ -135,13 +147,12 @@ script = ExtResource("6_ow25y")
 one_shot = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=624462843]
-color = Color(0.83312356, 0.6209222, 0.9963675, 1)
+color = Color(1, 0.80472267, 0.6631835, 1)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1053134067]
+visible = false
+zoom = Vector2(0.5, 0.5)
 
 [connection signal="body_entered" from="SpawnPoints/LevelExitL" to="." method="_on_level_exit_l_body_entered"]
 [connection signal="body_entered" from="SpawnPoints/LevelExitR" to="." method="_on_level_exit_r_body_entered"]
 [connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]
-
-[editable path="Obstructions/Obstruction2"]
-[editable path="Obstructions/Obstruction5"]
-[editable path="Obstructions/Obstruction6"]
-[editable path="Obstructions/Obstruction7"]

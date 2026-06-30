@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var crouch_collision_shape: CollisionShape2D = $CrouchCollisionShape
 @onready var sprite: Sprite2D = $Sprite2D
 
-const WALK_SPEED = 500.0
+const WALK_SPEED = 1500.0
 const CROUCH_SPEED = 300.0
 
 #handle crouching - shrink collision

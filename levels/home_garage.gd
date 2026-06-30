@@ -27,21 +27,36 @@ const WHEEL = preload("uid://dtsm6pmndsces")
 var _is_caught:bool = false
 var _can_exit:bool = false
 
+var can_move:bool=false
+
+@export var can_spawn_mole:bool=true
+@export var can_spawn_human:bool=true
+@export var can_spawn_wheel:bool=true
+@export var can_spawn_obstructions:bool=true
+
 func _ready() -> void:
 	#var from_left: bool = GameManager.spawn_on_left
 	#mole_instance.global_position = (mole_spawn_l if from_left else mole_spawn_r).global_position
-
-	spawn_human()
-	spawn_mole()
-	spawn_wheel()
+	if can_spawn_human:
+		spawn_human()
 	update_human()
-	connect_obstructions()
+	if can_spawn_mole:
+		spawn_mole()
+	if can_spawn_wheel:
+		spawn_wheel()
+	if can_spawn_obstructions:
+		connect_obstructions()
 	#$ResetLayer.visible=false
 	#GameManager.current_level_idx=0
 	await get_tree().create_timer(0.4).timeout
 	_can_exit = true
 #	AudioManager.play_music("level_0")
-	
+
+	if GameManager.current_idx==0:
+		HUD.set_camera(Vector2(0.5,0.5))
+	else:
+		HUD.set_camera(Vector2(0.3,0.3))
+
 func _process(delta: float) -> void:
 	#check if human found you
 	if human_state == 1:
@@ -122,13 +137,17 @@ func look_at_mole(delta) -> void:
 
 func reset_level()->void:
 	HUD.show_caught(false)
-	human_instance.queue_free()
-	spawn_human()
-	mole_instance.queue_free()
-	spawn_mole()
+	if human_instance:
+		human_instance.queue_free()
+		spawn_human()
+	if mole_instance:
+		mole_instance.queue_free()
+		spawn_mole()
 	if wheel_instance:
 		wheel_instance.queue_free()
 		spawn_wheel()
+
+	HUD.trigger_dialogue()
 
 	#$ResetLayer.visible=false
 	
@@ -148,7 +167,7 @@ func _on_reset_timer_timeout() -> void:
 
 func _on_level_exit_r_body_entered(body)->void:
 	if _can_exit and body == mole_instance:
-		print("calling load_level: 1")
+		HUD.show_dialogue(false)
 		GameManager.load_level.call_deferred(1)
 	if body == wheel_instance:
 #		AudioManager.play_sfx("collected")
@@ -158,7 +177,8 @@ func _on_level_exit_r_body_entered(body)->void:
 
 func _on_level_exit_l_body_entered(body)->void:
 	if _can_exit and body == mole_instance:
-		print("calling load_level: -1")
+		#print("calling load_level: -1")
+		HUD.show_dialogue(false)
 		GameManager.load_level.call_deferred(-1)
 	if body == wheel_instance:
 #		AudioManager.play_sfx("collected")

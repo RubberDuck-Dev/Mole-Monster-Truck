@@ -20,13 +20,16 @@ var current_dialogue = 0
 
 func _ready() -> void:
 #	show_dialogue(true)
-	trigger_dialogue()
+	#trigger_dialogue()
 	pass
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
 	#advance
 		trigger_dialogue()
+
+func set_camera(_vector_amt)->void:
+	$Camera2D.zoom = _vector_amt
 
 func set_hidden(hidden: bool) -> void:
 	is_hidden_sprite.self_modulate = Color.GREEN if hidden else Color.RED
@@ -43,39 +46,44 @@ func show_dialogue(on:bool) -> void:
 	dialogue_box.visible=on
 
 func trigger_dialogue() -> void:
-	show_dialogue(true)
 	update_dialogue_box()
+	show_dialogue(true)
 
 func update_dialogue_box()->void:
 
 	var speaker
 	var line
 
-	if dialogue_box.visible:
-		if current_dialogue < dialogue.size():
-			var dialogue_length = dialogue[current_dialogue].size()
-			
-			if current_line < dialogue_length:
-				speaker = dialogue[current_dialogue][current_line][0]
-				line = dialogue[current_dialogue][current_line][1]
-				dialogue_text.text=line
-				current_line += 1
-				
-				#print(str(speaker) + " : " + line)
-				show_speaker(speaker)
-				
-				if current_line == dialogue_length:
-					dialogue_action_label.text = "[E]\nclose"
-				else:
-					dialogue_action_label.text = "[E]\n>>"
-			else:
-				#end of dialogue chain
-				show_dialogue(false)
-				current_dialogue+=1
-				current_line=0
-		else:
-			#end of all dialogue
+	#if dialogue_box.visible:
+	if current_dialogue < dialogue.size():
+		var dialogue_length = dialogue[current_dialogue].size()
+
+		print(current_line)
+		print(dialogue_length)
+
+		if current_line == dialogue_length:
+			print("last line, closing")
+			current_dialogue+=1
+			current_line=0
 			show_dialogue(false)
+		elif current_line < dialogue_length:
+			speaker = dialogue[current_dialogue][current_line][0]
+			line = dialogue[current_dialogue][current_line][1]
+			dialogue_text.text=line
+			current_line += 1
+			
+			#print(str(speaker) + " : " + line)
+			show_speaker(speaker)
+			
+			if current_line == dialogue_length:
+				dialogue_action_label.text = "[E]\nclose"
+			else:
+				dialogue_action_label.text = "[E]\n>>"
+		else:
+			#end of dialogue chain
+			show_dialogue(false)
+			current_dialogue+=1
+			current_line=0
 
 func show_speaker(speaker:int) -> void:
 	match speaker:

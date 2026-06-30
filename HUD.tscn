@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dxk4osqmx8a0o"]
 
 [ext_resource type="Script" uid="uid://day0f0mwlmo5f" path="res://hud.gd" id="1_k5de2"]
-[ext_resource type="Texture2D" uid="uid://b5i5eb683x6um" path="res://art-assets/component-art/icon.svg" id="2_ne771"]
+[ext_resource type="Texture2D" uid="uid://clys6gftonmnj" path="res://art-assets/component-art/mole.png" id="2_xxqia"]
+[ext_resource type="Texture2D" uid="uid://45xt7gnvhhga" path="res://art-assets/component-art/mole_2.png" id="3_gv1iq"]
 [ext_resource type="Texture2D" uid="uid://dff0jnbnxt327" path="res://art-assets/component-art/search_icon.png" id="3_xxqia"]
 [ext_resource type="Texture2D" uid="uid://brtgyhg2u4cfc" path="res://art-assets/component-art/hide_icon.png" id="4_gv1iq"]
 
@@ -16,7 +17,6 @@ corner_radius_bottom_left = 20
 script = ExtResource("1_k5de2")
 
 [node name="DialogueMargin" type="MarginContainer" parent="." unique_id=1024730685]
-visible = false
 custom_minimum_size = Vector2(1280, 200)
 anchors_preset = 12
 anchor_top = 1.0
@@ -56,7 +56,8 @@ alignment = 1
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-texture = ExtResource("2_ne771")
+texture = ExtResource("2_xxqia")
+flip_h = true
 
 [node name="Label" type="Label" parent="DialogueMargin/Panel/MarginContainer/HBoxContainer" unique_id=1059741295]
 layout_mode = 2
@@ -69,7 +70,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 8
-texture = ExtResource("2_ne771")
+texture = ExtResource("3_gv1iq")
 
 [node name="Label2" type="Label" parent="DialogueMargin/Panel/MarginContainer/HBoxContainer" unique_id=696015863]
 custom_minimum_size = Vector2(120, 0)
@@ -200,4 +201,4 @@ horizontal_alignment = 1
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1990733911]
 position = Vector2(216, 128)
 offset = Vector2(640, 360)
-zoom = Vector2(0.3, 0.3)
+zoom = Vector2(0.5, 0.5)

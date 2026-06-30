@@ -28,6 +28,7 @@ point_count = 9
 [node name="Level1" type="Node2D" unique_id=1916670072]
 script = ExtResource("1_5hph3")
 enter_direction_left = true
+can_spawn_human = false
 metadata/_edit_lock_ = true
 
 [node name="BackgroundArt" type="Node2D" parent="." unique_id=336444561]
