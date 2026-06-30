@@ -145,10 +145,10 @@ func spawn_human()->void:
 		human_instance.global_position = human_path_2d.global_position
 	else:
 		human_instance.global_position = human_path_2d.global_position
+	human_instance.human_action.connect(human_acting)
 	path_follow_2d.add_child(human_instance)
 
 	#connect signal
-	human_instance.human_action.connect(human_acting)
 
 func spawn_mole()->void:
 	mole_instance = MOLE.instantiate()
@@ -183,6 +183,8 @@ func look_at_mole(delta) -> void:
 
 func reset_level()->void:
 	HUD.show_caught(false)
+	human_state=0
+
 	if human_instance:
 		human_instance.queue_free()
 		spawn_human()

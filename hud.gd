@@ -16,7 +16,7 @@ extends CanvasLayer
 	0:[[0,"Good morning, mon cher."], [1,"Erghhh.."], [0,"Too early?"], [1,"Too early."]],
 	1:[[0,"What to do..."], [0,"Aha!"], [0,"Let's grab that wheel!"]],
 	2:[[1,"What's that for?"], [0,"You said you wanted some air...","show_truck"],
-		[1,"A MoNsTeR TrUcK!?"],[0,"I just need to fetch a few things"],[1,"Are you mad? We're moles!"]],
+		[1,"A MoNsTeR TrUcK!?"],[0,"I need to fetch a few things.."],[1,"Are you mad? We're moles!"]],
 	3:[[0,"Huh?!"], [0,"I'm being watched..."]]
 	}
 

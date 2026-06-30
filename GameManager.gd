@@ -18,7 +18,7 @@ func load_level(exit_direction)->void:
 	current_idx = clampi(current_idx + exit_direction, 0, levels.size() - 1)
 	spawn_on_left = exit_direction > 0  # exit right -> appear on the next level's LEFT
 
-	print("Loading level: " + str(current_idx))
+#	print("Loading level: " + str(current_idx))
 
 	get_tree().change_scene_to_packed(levels[current_idx])
 
