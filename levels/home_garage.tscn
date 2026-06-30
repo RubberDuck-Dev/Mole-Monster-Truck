@@ -57,6 +57,7 @@ texture = ExtResource("3_i5lcu")
 flip_h = true
 
 [node name="MonsterTruck" type="Sprite2D" parent="BackgroundArt" unique_id=199098043]
+visible = false
 position = Vector2(360, 424.00003)
 scale = Vector2(3, 3)
 texture = ExtResource("3_4d72q")

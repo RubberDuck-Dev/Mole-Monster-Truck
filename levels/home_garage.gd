@@ -27,7 +27,7 @@ const WHEEL = preload("uid://dtsm6pmndsces")
 var _is_caught:bool = false
 var _can_exit:bool = false
 
-var can_move:bool=false
+#var can_move:bool=false
 
 @export var can_spawn_mole:bool=true
 @export var can_spawn_human:bool=true
@@ -52,10 +52,11 @@ func _ready() -> void:
 	_can_exit = true
 #	AudioManager.play_music("level_0")
 
-	if GameManager.current_idx==0:
-		HUD.set_camera(Vector2(0.5,0.5))
-	else:
-		HUD.set_camera(Vector2(0.3,0.3))
+	HUD.dialogue_finished.connect(_on_dialogue_finished)
+	HUD.dialogue_event.connect(_on_dialogue_event)
+	handle_dialogue()
+	
+	set_camera_per_level()
 
 func _process(delta: float) -> void:
 	#check if human found you
@@ -70,13 +71,57 @@ func _process(delta: float) -> void:
 				_is_caught=true
 				HUD.show_caught(true)
 				#$ResetLayer.visible=true
+				mole_instance.can_move=false
 				reset_timer.start()
+
+func handle_dialogue()->void:
+	match GameManager.current_idx:
+		0:
+			match GameManager.part_collected:
+				0:
+					mole_instance.can_move=false
+					HUD.start_dialogue(0)
+				1:
+					mole_instance.can_move=false
+					HUD.start_dialogue(2)
+				2:
+					pass
+				_:
+					pass
+		1:
+			match GameManager.part_collected:
+				0:
+					mole_instance.can_move=false
+					HUD.start_dialogue(1)
+				1:
+					pass
+				2:
+					pass
+				_:
+					pass
+		2:
+			match GameManager.part_collected:
+				0:
+					pass
+				1:
+					mole_instance.can_move=false
+					HUD.start_dialogue(3)
+				2:
+					pass
+				_:
+					pass
 
 func connect_obstructions()->void:
 	#for the current level, loop and connect signals
 	for o in $Obstructions.get_children():
 		o.body_entered.connect(_on_obstruction_body_entered)
 		o.body_exited.connect(_on_obstruction_body_exited)
+
+func set_camera_per_level()->void:
+	if GameManager.current_idx==0:  #starting level 0
+		HUD.set_camera(Vector2(0.5,0.5))
+	elif GameManager.current_idx==1: #starting level 1
+		HUD.set_camera(Vector2(0.3,0.3))
 
 func human_acting(action_type)->void:
 	human_state=action_type
@@ -113,6 +158,7 @@ func spawn_mole()->void:
 	else:
 		mole_instance.global_position = mole_spawn_r.global_position
 	self.add_child(mole_instance)
+	#mole_instance.can_move = can_move
 
 func spawn_wheel()->void:
 	wheel_instance = WHEEL.instantiate()
@@ -147,9 +193,7 @@ func reset_level()->void:
 		wheel_instance.queue_free()
 		spawn_wheel()
 
-	HUD.trigger_dialogue()
-
-	#$ResetLayer.visible=false
+	mole_instance.can_move=true
 	
 func _on_obstruction_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D or body is RigidBody2D:
@@ -172,7 +216,7 @@ func _on_level_exit_r_body_entered(body)->void:
 	if body == wheel_instance:
 #		AudioManager.play_sfx("collected")
 		HUD.show_success(true)
-		GameManager.part_collected = true
+		GameManager.part_collected+=1
 		wheel_instance.queue_free()
 
 func _on_level_exit_l_body_entered(body)->void:
@@ -183,5 +227,16 @@ func _on_level_exit_l_body_entered(body)->void:
 	if body == wheel_instance:
 #		AudioManager.play_sfx("collected")
 		HUD.show_success(true)
-		GameManager.part_collected = true
+		GameManager.part_collected+=1
 		wheel_instance.queue_free()
+
+func _on_dialogue_finished(_id) -> void:
+	# can move once dialogue ends
+	if mole_instance:
+		mole_instance.can_move = true
+
+func _on_dialogue_event(tag) -> void:
+	match tag:
+		"show_truck":
+			if has_node("BackgroundArt/MonsterTruck"):
+				$BackgroundArt/MonsterTruck.visible = true

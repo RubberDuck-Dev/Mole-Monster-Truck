@@ -9,7 +9,7 @@ var spawn_on_left := false        # which side to spawn mole
 
 #progress tracking
 @export var stage_completed:int=0
-@export var part_collected:bool=false
+@export var part_collected:int=0
 
 func _ready()->void:
 	AudioManager.set_muted(audio_muted)

@@ -12,11 +12,20 @@ extends CanvasLayer
 @onready var speaker_left: TextureRect = $DialogueMargin/Panel/MarginContainer/HBoxContainer/SpeakerLeft
 @onready var speaker_right: TextureRect = $DialogueMargin/Panel/MarginContainer/HBoxContainer/SpeakerRight
 
-@export var dialogue: Dictionary = {0:[[0,"Good morning, mon cher."], [1,"Erghhh.."], [0,"Too early?"], [1,"Too early."]],
-1:[[0,"What to do..."], [0,"Aha!"], [0,"Let's clear our heads..."], [0,"get some air."],[1,"Now we're talking!"]]}
+@export var dialogue: Dictionary = {
+	0:[[0,"Good morning, mon cher."], [1,"Erghhh.."], [0,"Too early?"], [1,"Too early."]],
+	1:[[0,"What to do..."], [0,"Aha!"], [0,"Let's grab that wheel!"]],
+	2:[[1,"What's that for?"], [0,"You said you wanted some air...","show_truck"],
+		[1,"A MoNsTeR TrUcK!?"],[0,"I just need to fetch a few things"],[1,"Are you mad? We're moles!"]],
+	3:[[0,"Huh?!"], [0,"I'm being watched..."]]
+	}
 
-var current_line = 0
-var current_dialogue = 0
+var current_line:int = 0
+var current_dialogue:int = 0
+var dialogue_active:bool = false
+
+signal dialogue_finished(id)  
+signal dialogue_event(tag)
 
 func _ready() -> void:
 #	show_dialogue(true)
@@ -24,12 +33,13 @@ func _ready() -> void:
 	pass
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("interact"):
+	if dialogue_active and Input.is_action_just_pressed("interact"):
 	#advance
-		trigger_dialogue()
+		advance_dialogue()
 
 func set_camera(_vector_amt)->void:
-	$Camera2D.zoom = _vector_amt
+	var tween = create_tween()
+	tween.tween_property($Camera2D, "zoom", _vector_amt, 0.3).set_trans(Tween.TRANS_LINEAR)
 
 func set_hidden(hidden: bool) -> void:
 	is_hidden_sprite.self_modulate = Color.GREEN if hidden else Color.RED
@@ -45,45 +55,46 @@ func show_success(on: bool) -> void:
 func show_dialogue(on:bool) -> void:
 	dialogue_box.visible=on
 
-func trigger_dialogue() -> void:
-	update_dialogue_box()
+func start_dialogue(id) -> void:
+	if not dialogue.has(id):
+		return
+	current_dialogue = id
+	current_line = 0
+	dialogue_active = true
 	show_dialogue(true)
+	_show_line()
 
-func update_dialogue_box()->void:
+func advance_dialogue() -> void:
+	if not dialogue_active:
+		return
+	var convo = dialogue[current_dialogue]
+	if current_line >= convo.size():
+		_finish_dialogue()
+	else:
+		_show_line()
 
-	var speaker
-	var line
+func _show_line() -> void:
+	var convo = dialogue[current_dialogue]
+	if current_line >= convo.size():
+		_finish_dialogue()
+		return
 
-	#if dialogue_box.visible:
-	if current_dialogue < dialogue.size():
-		var dialogue_length = dialogue[current_dialogue].size()
+	var entry = convo[current_line]
+	dialogue_text.text = entry[1]
+	show_speaker(entry[0])
 
-		print(current_line)
-		print(dialogue_length)
+	# optional 3rd element = an event tag to fire the moment this line shows
+	if entry.size() > 2:
+		dialogue_event.emit(entry[2])
 
-		if current_line == dialogue_length:
-			print("last line, closing")
-			current_dialogue+=1
-			current_line=0
-			show_dialogue(false)
-		elif current_line < dialogue_length:
-			speaker = dialogue[current_dialogue][current_line][0]
-			line = dialogue[current_dialogue][current_line][1]
-			dialogue_text.text=line
-			current_line += 1
-			
-			#print(str(speaker) + " : " + line)
-			show_speaker(speaker)
-			
-			if current_line == dialogue_length:
-				dialogue_action_label.text = "[E]\nclose"
-			else:
-				dialogue_action_label.text = "[E]\n>>"
-		else:
-			#end of dialogue chain
-			show_dialogue(false)
-			current_dialogue+=1
-			current_line=0
+	current_line += 1
+	dialogue_action_label.text = "[E]\nclose" if current_line >= convo.size() else "[E]\n>>"
+
+func _finish_dialogue() -> void:
+	dialogue_active = false
+	show_dialogue(false)
+	dialogue_finished.emit(current_dialogue)
+
 
 func show_speaker(speaker:int) -> void:
 	match speaker:

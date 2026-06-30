@@ -12,6 +12,8 @@ var is_crouching:bool = false
 var is_pushing:bool = false
 var is_charging:bool = false
 
+@export var can_move: bool = true
+
 var face_direction=0
 
 const STAND_HEIGHT:float = 128.0
@@ -58,15 +60,17 @@ func _physics_process(delta: float) -> void:
 	var curr_speed = CROUCH_SPEED if is_crouching else WALK_SPEED
 	# Get the input direction and handle movement
 	var direction := Input.get_axis("left", "right")
-	if direction:
-		velocity.x = direction * curr_speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, curr_speed)
 
-	if direction>0:
-		face_direction = 1
-	else:
-		face_direction = 0
-	$Sprite2D.flip_h=face_direction
+	if can_move:
+		if direction:
+			velocity.x = direction * curr_speed
+		else:
+				velocity.x = move_toward(velocity.x, 0, curr_speed)
 
-	move_and_slide()
+		if direction>0:
+			face_direction = 1
+		else:
+			face_direction = 0
+
+		$Sprite2D.flip_h=face_direction
+		move_and_slide()
