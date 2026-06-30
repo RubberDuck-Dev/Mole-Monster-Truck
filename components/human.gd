@@ -4,8 +4,8 @@ enum State { DELAY, RED_LIGHT, WARNING, GREEN_LIGHT  }
 
 var current_state: State = State.DELAY
 
-@export var delay_time: float = 2.0 #time before starting search cycle
-@export var wait_light_time= range(4,8)
+@export var delay_time: float = 1.0 #time before starting search cycle
+@export var wait_light_time= range(4,6)
 @export var search_light_time: float = 4.0
 @export var warning_time: float = 5.0
 

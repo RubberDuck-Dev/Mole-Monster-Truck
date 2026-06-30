@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d2gw6bjytie66"]
 
-[ext_resource type="Script" uid="uid://bxu7gbgxvtkvl" path="res://levels/home_garage.gd" id="1_vlnuv"]
+[ext_resource type="Script" uid="uid://bxu7gbgxvtkvl" path="res://levels/LevelManager.gd" id="1_vlnuv"]
 [ext_resource type="Texture2D" uid="uid://d1v3up6gq7g20" path="res://art-assets/component-art/home_bg.png" id="2_vlnuv"]
 [ext_resource type="Texture2D" uid="uid://cbg4lftn18kom" path="res://art-assets/component-art/monster_truck.png" id="3_4d72q"]
 [ext_resource type="Texture2D" uid="uid://b6su3m2c3pw7o" path="res://art-assets/component-art/mole2_bed.png" id="3_i5lcu"]
@@ -34,6 +34,139 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -928, 496, 0, 0, 0, 0, 8, 396.47998, 0, 0, 0, 0, 864, 505.91998, 0, 0, 0, 0, 1600, 443.09332, 0, 0, 0, 0, 1832, 505.91998, 0, 0, 0, 0, 2600, 451.19998)
 }
 point_count = 6
+
+[sub_resource type="Animation" id="Animation_4d72q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundArt/MonsterTruck:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BackgroundArt/MonsterTruck:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(360, 424.00003)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BackgroundArt/MonsterTruck/Wheel1:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BackgroundArt/MonsterTruck/Wheel2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BackgroundArt/MonsterTruck:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_i5lcu"]
+resource_name = "drive_off"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundArt/MonsterTruck:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.0666666, 3.1666665, 3.2666667, 3.3666666, 3.4666667, 3.5341282, 3.634128, 3.7341282, 3.8341281, 3.9341283),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.02617994, -0.04363323, 0.034906585, -0.05235988, 0.0, 0.02617994, -0.04363323, 0.034906585, -0.05235988]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BackgroundArt/MonsterTruck:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.0666666, 3.9364707, 5.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(360, 424.00003), Vector2(360, 424.00003), Vector2(2768, 424.00003)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BackgroundArt/MonsterTruck/Wheel1:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.88647294, 4.1220994),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 12.566371]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BackgroundArt/MonsterTruck/Wheel2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.88647294, 4.1220994),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 12.566371]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BackgroundArt/MonsterTruck:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3.0666666, 3.9088159, 3.967914, 5.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -0.4502949470145372, -0.04712389]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xe1qq"]
+_data = {
+&"RESET": SubResource("Animation_4d72q"),
+&"drive_off": SubResource("Animation_i5lcu")
+}
 
 [node name="HomeGarage" type="Node2D" unique_id=1916670072]
 script = ExtResource("1_vlnuv")
@@ -159,6 +292,9 @@ color = Color(1, 0.80472267, 0.6631835, 1)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1053134067]
 visible = false
 zoom = Vector2(0.5, 0.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1118487409]
+libraries/ = SubResource("AnimationLibrary_xe1qq")
 
 [connection signal="body_entered" from="SpawnPoints/LevelExitL" to="." method="_on_level_exit_l_body_entered"]
 [connection signal="body_entered" from="SpawnPoints/LevelExitR" to="." method="_on_level_exit_r_body_entered"]

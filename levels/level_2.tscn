@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dvbnxii6m185v"]
 
-[ext_resource type="Script" uid="uid://bxu7gbgxvtkvl" path="res://levels/home_garage.gd" id="1_ilhis"]
+[ext_resource type="Script" uid="uid://bxu7gbgxvtkvl" path="res://levels/LevelManager.gd" id="1_ilhis"]
 [ext_resource type="Texture2D" uid="uid://bmvv6nr3cou50" path="res://art-assets/level-art/kitchen_window_bg.png" id="2_ep78u"]
 [ext_resource type="Texture2D" uid="uid://t255el8jcio7" path="res://art-assets/level-art/kitchen_bg.png" id="3_dfjjl"]
 [ext_resource type="Texture2D" uid="uid://doiko4et5mkxg" path="res://art-assets/component-art/shelf_floor.png" id="4_at1ld"]

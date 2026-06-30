@@ -13,12 +13,15 @@ extends CanvasLayer
 @onready var speaker_right: TextureRect = $DialogueMargin/Panel/MarginContainer/HBoxContainer/SpeakerRight
 
 @export var dialogue: Dictionary = {
-	0:[[0,"Good morning, mon cher."], [1,"Erghhh.."], [0,"Too early?"], [1,"Too early."]],
+	0:[[0,"Good morning, mon cher."], [1,"Erghhh.."], [0,"Too early?"], [1,"Too early."],[0,"Shall we get some air?"]],
 	1:[[0,"What to do..."], [0,"Aha!"], [0,"Let's grab that wheel!"]],
-	2:[[1,"What's that for?"], [0,"You said you wanted some air...","show_truck"],
-		[1,"A MoNsTeR TrUcK!?"],[0,"I need to fetch a few things.."],[1,"Are you mad? We're moles!"],[0,"We are. And we like monster trucks."]],
+	2:[[1,"What's that for?"], [0,"Darling, as I said..."],[0,"I wanted some air..."],
+		[1,"A MoNsTeR TrUcK!?","show_truck"],[1,"Are you mad? We're moles!"],[0,"We are. And we like monster trucks."]],
 	3:[[0,"Huh?!"], [0,"I'm being watched..."]],
-	4:[[0,"I should return home."]]	
+	4:[[0,"I should return home."]],
+	5:[[0,"I should fetch that."]],
+	6:[[0,"One more, my dear."]],
+	7:[[0,"Hop in!","ride_truck"]]
 	}
 
 var current_line:int = 0
