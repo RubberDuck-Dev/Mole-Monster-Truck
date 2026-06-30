@@ -7,20 +7,20 @@ extends Node
 @export var SFX :={
 	"human_search": "res://audio/sfx/human_search.wav",
 	"human_idle": "res://audio/sfx/human_idle.wav",
-	}	#"wheel_roll":    "res://audio/sfx/",
+	#"wheel_roll":    "res://audio/sfx/",
 	#"human_idle":    "res://audio/sfx/",
 	#"mole_push":    "res://audio/sfx/",
 	#"mole_chatter":    "res://audio/sfx/",
 	#"human_countdown":    "res://audio/sfx/",
 	#"caught":    "res://audio/sfx/",
-	#"collected":    "res://audio/sfx/",
+	"collected":    "res://audio/sfx/collected.wav",
 	#"truck_upgrade":    "res://audio/sfx/",
 	#"truck_engine":    "res://audio/sfx/",
 	#"truck_drive":    "res://audio/sfx/",
 	#"truck_jump":    "res://audio/sfx/",
 	#"cake_landing":    "res://audio/sfx/",
 	#"cake_success":    "res://audio/sfx/",
-#}
+}
 
 const SFX_LIMIT := 8   # how many SFX can overlap at once
 

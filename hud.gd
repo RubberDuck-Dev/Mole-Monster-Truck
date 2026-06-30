@@ -16,8 +16,9 @@ extends CanvasLayer
 	0:[[0,"Good morning, mon cher."], [1,"Erghhh.."], [0,"Too early?"], [1,"Too early."]],
 	1:[[0,"What to do..."], [0,"Aha!"], [0,"Let's grab that wheel!"]],
 	2:[[1,"What's that for?"], [0,"You said you wanted some air...","show_truck"],
-		[1,"A MoNsTeR TrUcK!?"],[0,"I need to fetch a few things.."],[1,"Are you mad? We're moles!"]],
-	3:[[0,"Huh?!"], [0,"I'm being watched..."]]
+		[1,"A MoNsTeR TrUcK!?"],[0,"I need to fetch a few things.."],[1,"Are you mad? We're moles!"],[0,"We are. And we like monster trucks."]],
+	3:[[0,"Huh?!"], [0,"I'm being watched..."]],
+	4:[[0,"I should return home."]]	
 	}
 
 var current_line:int = 0
@@ -83,7 +84,7 @@ func _show_line() -> void:
 	dialogue_text.text = entry[1]
 	show_speaker(entry[0])
 
-	# optional 3rd element = an event tag to fire the moment this line shows
+	# optional element = fire an event tag
 	if entry.size() > 2:
 		dialogue_event.emit(entry[2])
 
@@ -94,7 +95,6 @@ func _finish_dialogue() -> void:
 	dialogue_active = false
 	show_dialogue(false)
 	dialogue_finished.emit(current_dialogue)
-
 
 func show_speaker(speaker:int) -> void:
 	match speaker:

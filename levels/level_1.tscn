@@ -25,6 +25,15 @@ _data = {
 }
 point_count = 9
 
+[sub_resource type="Gradient" id="Gradient_4d72q"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_btoec"]
+gradient = SubResource("Gradient_4d72q")
+width = 128
+height = 128
+fill_from = Vector2(0.47416413, 0.5167173)
+fill_to = Vector2(1, 1)
+
 [node name="Level1" type="Node2D" unique_id=1916670072]
 script = ExtResource("1_5hph3")
 enter_direction_left = true
@@ -63,7 +72,7 @@ scale = Vector2(6, 1.5)
 texture = ExtResource("4_5rr72")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Floor" unique_id=1227552798]
-position = Vector2(168, 96)
+position = Vector2(200, -32)
 scale = Vector2(6, 1.5)
 occluder = SubResource("OccluderPolygon2D_5hph3")
 
@@ -133,6 +142,22 @@ one_shot = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=624462843]
 color = Color(0.18406272, 0.8157818, 0.86119276, 1)
+
+[node name="RightExitLight" type="PointLight2D" parent="." unique_id=1433176150]
+visible = false
+position = Vector2(2824, 362.00003)
+scale = Vector2(5.2500005, 9.90625)
+color = Color(0.99494237, 0.78914934, 0.56671625, 1)
+energy = 5.0
+texture = SubResource("GradientTexture2D_btoec")
+
+[node name="LeftExitLight" type="PointLight2D" parent="." unique_id=590915489]
+visible = false
+position = Vector2(-1101.8726, 347.86996)
+scale = Vector2(-5.2902436, 10.123782)
+color = Color(0.99494237, 0.78914934, 0.56671625, 1)
+energy = 5.0
+texture = SubResource("GradientTexture2D_btoec")
 
 [connection signal="body_entered" from="SpawnPoints/LevelExitL" to="." method="_on_level_exit_l_body_entered"]
 [connection signal="body_entered" from="SpawnPoints/LevelExitR" to="." method="_on_level_exit_r_body_entered"]

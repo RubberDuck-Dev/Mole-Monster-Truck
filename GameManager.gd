@@ -23,5 +23,5 @@ func load_level(exit_direction)->void:
 	get_tree().change_scene_to_packed(levels[current_idx])
 
 	#update stage completion
-	if current_idx>0 and part_collected:
+	if current_idx>0 and part_collected==current_idx:
 		stage_completed +=1

@@ -97,6 +97,11 @@ texture = ExtResource("4_xe1qq")
 position = Vector2(112, -135.99998)
 shape = SubResource("WorldBoundaryShape2D_g4v7s")
 
+[node name="Wall" type="CollisionShape2D" parent="Floor" unique_id=125356678]
+position = Vector2(-1032, -640)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_g4v7s")
+
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Floor" unique_id=959022615]
 position = Vector2(168, 96)
 scale = Vector2(6, 1.5)
@@ -123,6 +128,7 @@ collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnPoints/LevelExitL" unique_id=286392809]
 shape = SubResource("RectangleShape2D_yf5fn")
+disabled = true
 debug_color = Color(0.90395904, 0.00014689505, 0.7531044, 0.41960785)
 
 [node name="LevelExitR" type="Area2D" parent="SpawnPoints" unique_id=1861058172]

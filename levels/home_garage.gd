@@ -8,6 +8,10 @@ extends Node2D
 
 @onready var wheel_spawn: Node2D = $SpawnPoints/WheelSpawn
 
+@onready var level_exit_r: Area2D = $SpawnPoints/LevelExitR
+@onready var level_exit_right_collision: CollisionShape2D = $SpawnPoints/LevelExitR/CollisionShape2D
+
+
 @export var is_hidden:bool=false
 var human_state:int
 @export var enter_direction_left:bool=false
@@ -42,7 +46,7 @@ func _ready() -> void:
 	update_human()
 	if can_spawn_mole:
 		spawn_mole()
-	if can_spawn_wheel:
+	if can_spawn_wheel and GameManager.stage_completed<=GameManager.current_idx:
 		spawn_wheel()
 	if can_spawn_obstructions:
 		connect_obstructions()
@@ -73,6 +77,9 @@ func _process(delta: float) -> void:
 				#$ResetLayer.visible=true
 				mole_instance.can_move=false
 				reset_timer.start()
+	
+	if GameManager.stage_completed: #enable different states
+		check_level_handling()
 
 func handle_dialogue()->void:
 	match GameManager.current_idx:
@@ -110,6 +117,14 @@ func handle_dialogue()->void:
 					pass
 				_:
 					pass
+
+func check_level_handling()->void:
+	if GameManager.current_idx==1 and GameManager.part_collected==0:
+		#if wheel not collected, do not 
+		level_exit_right_collision.disabled=true
+		HUD.start_dialogue(4)
+	if GameManager.current_idx==1 and GameManager.part_collected>0:
+		level_exit_right_collision.disabled=false
 
 func connect_obstructions()->void:
 	#for the current level, loop and connect signals
@@ -213,13 +228,15 @@ func _on_reset_timer_timeout() -> void:
 
 func _on_level_exit_r_body_entered(body)->void:
 	if _can_exit and body == mole_instance:
+		if GameManager.current_idx == 1 and GameManager.stage_completed<GameManager.current_idx:
+			HUD.start_dialogue(4)
+			return
 		HUD.show_dialogue(false)
 		GameManager.load_level.call_deferred(1)
+
 	if body == wheel_instance:
-#		AudioManager.play_sfx("collected")
-		HUD.show_success(true)
-		GameManager.part_collected+=1
-		wheel_instance.queue_free()
+		_collect_part()
+		return
 
 func _on_level_exit_l_body_entered(body)->void:
 	if _can_exit and body == mole_instance:
@@ -227,10 +244,21 @@ func _on_level_exit_l_body_entered(body)->void:
 		HUD.show_dialogue(false)
 		GameManager.load_level.call_deferred(-1)
 	if body == wheel_instance:
-#		AudioManager.play_sfx("collected")
-		HUD.show_success(true)
-		GameManager.part_collected+=1
-		wheel_instance.queue_free()
+		_collect_part()
+		return
+
+func _collect_part() -> void:
+	if wheel_instance == null:
+		return
+	AudioManager.play_sfx("collected")
+	#HUD.show_success(true)
+	HUD.start_dialogue(4)
+	GameManager.part_collected += 1
+	GameManager.stage_completed = GameManager.current_idx
+	wheel_instance.queue_free()
+	wheel_instance = null
+
+	$LeftExitLight.visible=true
 
 func _on_dialogue_finished(_id) -> void:
 	# can move once dialogue ends

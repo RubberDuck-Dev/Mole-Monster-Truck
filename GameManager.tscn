@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://d2gw6bjytie66" path="res://levels/home_garage.tscn" id="2_aelf4"]
 [ext_resource type="PackedScene" uid="uid://b855fqjddg7iv" path="res://levels/level_1.tscn" id="3_au0an"]
 [ext_resource type="PackedScene" uid="uid://dvbnxii6m185v" path="res://levels/level_2.tscn" id="4_108xg"]
+[ext_resource type="PackedScene" uid="uid://clwnlihme6qh8" path="res://levels/level_3.tscn" id="5_dxunw"]
 
 [node name="GameManager" type="Node" unique_id=148164930]
 script = ExtResource("1_p13vs")
-levels = Array[PackedScene]([ExtResource("2_aelf4"), ExtResource("3_au0an"), ExtResource("4_108xg")])
+levels = Array[PackedScene]([ExtResource("2_aelf4"), ExtResource("3_au0an"), ExtResource("4_108xg"), ExtResource("5_dxunw")])
