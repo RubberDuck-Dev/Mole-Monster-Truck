@@ -57,13 +57,13 @@ func _ready() -> void:
 	#GameManager.current_level_idx=0
 	await get_tree().create_timer(0.4).timeout
 	_can_exit = true
-#	AudioManager.play_music("level_0")
 
 	HUD.dialogue_finished.connect(_on_dialogue_finished)
 	HUD.dialogue_event.connect(_on_dialogue_event)
 	handle_dialogue()
 	
 	set_camera_per_level()
+	AudioManager.play_music("main")
 
 func _process(delta: float) -> void:
 	#check if human found you
@@ -273,7 +273,8 @@ func ride_truck()->void:
 		mole_instance.can_move=false
 		mole_instance.visible=false
 		$BackgroundArt/MonsterTruck.texture=MONSTER_TRUCK_DRIVEN
-		
+
+#		AudioManager.play_sfx("truck_engine")		
 		$AnimationPlayer.play("drive_off")
 		
 	pass

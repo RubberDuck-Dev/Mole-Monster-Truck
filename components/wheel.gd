@@ -22,7 +22,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	track_body()
-
+	
 	if tracking_body:
 		$PushArrow.visible = true
 		if tracking_body.is_charging:
@@ -60,6 +60,14 @@ func _process(_delta: float) -> void:
 				push_ball()
 				#self.linear_velocity = Vector2(push_strength * push_direction, 0)
 			push_strength = 0.0
+
+func _physics_process(_delta: float) -> void:
+
+	if linear_velocity.x != 0.0:
+#		AudioManager.play_sfx("collected")
+		pass
+
+
 
 func hide_labels()->void:
 	$Label.visible = false

@@ -1,8 +1,8 @@
 extends Node
 
-@export var MUSIC := {}
-	#"level_0": "res://audio/music/",
-#}
+@export var MUSIC := {
+	"main": "res://audio/music/MMT_Main_Theme_1.wav",
+}
 
 @export var SFX :={
 	"human_search": "res://audio/sfx/human_search.wav",
@@ -35,11 +35,13 @@ func _ready() -> void:
 	_music_player = AudioStreamPlayer.new()
 	_music_player.bus = _safe_bus("Music")
 	add_child(_music_player)
+
 	for i in SFX_LIMIT:
 		var p := AudioStreamPlayer.new()
 		p.bus = _safe_bus("SFX")
 		add_child(p)
 		_sfx_players.append(p)
+
 	for key in MUSIC: _music[key] = _try_load(MUSIC[key])
 	for key in SFX:   _sfx[key]   = _try_load(SFX[key])
 
@@ -53,27 +55,29 @@ func _safe_bus(bus_name: String) -> String:
 	# fall back to Master if you haven't made the bus yet
 	return bus_name if AudioServer.get_bus_index(bus_name) != -1 else "Master"
 
-func play_music(name: String, restart_if_same := false) -> void:
+func play_music(_name: String, restart_if_same := false) -> void:
 	if muted: return
-	if name == _current and _music_player.playing and not restart_if_same:
+	if _name == _current and _music_player.playing and not restart_if_same:
 		return
-	var stream = _music.get(name)
-	if stream == null: return            # not delivered yet -> silence
+	var stream = _music.get(_name)
+	if stream == null: return            # not delivered yet = silence
+
 	if stream is AudioStreamOggVorbis or stream is AudioStreamMP3:
 		stream.loop = true
 	elif stream is AudioStreamWAV:
 		stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
+
 	_music_player.stream = stream
 	_music_player.play()
-	_current = name
+	_current = _name
 
 func stop_music() -> void:
 	_music_player.stop()
 	_current = ""
 
-func play_sfx(name: String) -> void:
+func play_sfx(_name: String) -> void:
 	if muted: return
-	var stream = _sfx.get(name)
+	var stream = _sfx.get(_name)
 	if stream == null: return
 	var p := _free_player()
 	p.stream = stream
