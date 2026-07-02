@@ -6,8 +6,8 @@ var current_state: State = State.DELAY
 
 @export var delay_time: float = 1.0 #time before starting search cycle
 @export var wait_light_time= range(4,6)
-@export var search_light_time: float = 4.0
-@export var warning_time: float = 5.0
+@export var search_light_time: float = 3.0
+@export var warning_time: float = 2.0
 
 @onready var timer: Timer = $StateTimer
 @onready var point_light: PointLight2D = $Eyeball/PointLightNode/PointLight2D

@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://bvvshnm7c41s1"]
 
-[ext_resource type="Script" uid="uid://bxu7gbgxvtkvl" path="res://levels/LevelManager.gd" id="1_1ugsj"]
+[ext_resource type="Script" uid="uid://cag4imewsejet" path="res://levels/level_cake.gd" id="1_1ugsj"]
 [ext_resource type="Texture2D" uid="uid://bmvv6nr3cou50" path="res://art-assets/level-art/kitchen_window_bg.png" id="2_orm7y"]
 [ext_resource type="Texture2D" uid="uid://t255el8jcio7" path="res://art-assets/level-art/kitchen_bg.png" id="3_rfyso"]
 [ext_resource type="Texture2D" uid="uid://doiko4et5mkxg" path="res://art-assets/component-art/shelf_floor.png" id="4_k44lx"]
 [ext_resource type="PackedScene" uid="uid://p6nm45b3s4vp" path="res://components/obstruction.tscn" id="5_igxl6"]
 [ext_resource type="Script" uid="uid://cpfcpqjd08voh" path="res://components/human_follow.gd" id="6_fiag0"]
+[ext_resource type="Texture2D" uid="uid://645nsjlb1x5f" path="res://art-assets/component-art/monster_truck_driven.png" id="7_rfyso"]
+[ext_resource type="Texture2D" uid="uid://baw7ugn0w87yc" path="res://art-assets/component-art/wheel.png" id="8_k44lx"]
+[ext_resource type="Texture2D" uid="uid://d2pa8objekv3y" path="res://art-assets/component-art/retina.png" id="9_fiag0"]
+[ext_resource type="Texture2D" uid="uid://clys6gftonmnj" path="res://art-assets/component-art/mole.png" id="10_vqui7"]
+[ext_resource type="Texture2D" uid="uid://45xt7gnvhhga" path="res://art-assets/component-art/mole_2.png" id="11_4hbdp"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5hph3"]
 polygon = PackedVector2Array(-357.33334, 64, 357.33334, 53.333313, 358.66666, 128, -360, 128)
@@ -25,12 +30,268 @@ _data = {
 }
 point_count = 9
 
+[sub_resource type="Animation" id="Animation_igxl6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MonsterTruck:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1168.0004, -600)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MonsterTruck:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.1134464]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mole1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1256.0043, 935.99994)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mole2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1255.9987, 935.99994)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mole2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mole1:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mole1:skew")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mole2:skew")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WinContainer:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WinContainer:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_fiag0"]
+resource_name = "cake_splash"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MonsterTruck:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.0544933, 3.0333333, 4.033452),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1168.0004, -600), Vector2(511.99994, 144), Vector2(1977.045, 1656), Vector2(2272, 2568)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MonsterTruck:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.0779265, 3.0580306),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.1134464, 1.0402162, 1.3281956]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mole1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.0333333, 4.4171553),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(888, 936), Vector2(888, 456.001)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mole2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.046314, 4.4171553),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1255.9987, 935.99994), Vector2(1248.0012, 456.00128)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mole2:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3.046314),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mole1:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3.046314),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mole1:skew")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(4.2414064, 4.2999897, 4.428872, 4.5020776, 4.63096, 4.705006, 4.8338885),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.08726646, -0.1134464, 0.08726646, -0.1134464, 0.08726646, -0.1134464]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mole2:skew")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(4.2414064, 4.2999897, 4.428872, 4.492803, 4.5513864, 4.680269, 4.7587447, 4.817328, 4.9462104),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.08726646, -0.1134464, 0.0, 0.08726646, -0.1134464, 0.0, 0.08726646, -0.1134464]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WinContainer:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(4.594885, 4.683532),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WinContainer:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(4.698048, 4.9666667, 5.0333333, 5.0626297),
+"transitions": PackedFloat32Array(1, 2, 2, 2),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1.1, 1.1), Vector2(0.95, 0.95), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vqui7"]
+_data = {
+&"RESET": SubResource("Animation_igxl6"),
+&"cake_splash": SubResource("Animation_fiag0")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fiag0"]
+bg_color = Color(0.36862746, 0.6745098, 0.52156866, 0.8862745)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="LevelCake" type="Node2D" unique_id=1916670072]
 script = ExtResource("1_1ugsj")
-enter_direction_left = true
-can_spawn_human = false
-can_spawn_wheel = false
-can_spawn_obstructions = false
 metadata/_edit_lock_ = true
 
 [node name="BackgroundArt" type="Node2D" parent="." unique_id=336444561]
@@ -88,6 +349,7 @@ position = Vector2(-704, 752)
 position = Vector2(2288, 744)
 
 [node name="SpawnPoints" type="Node2D" parent="." unique_id=1057099240]
+visible = false
 
 [node name="MoleSpawnL" type="Node2D" parent="SpawnPoints" unique_id=1273875179]
 position = Vector2(-1024, 616.00006)
@@ -131,6 +393,93 @@ one_shot = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=624462843]
 color = Color(0.9997135, 0.8984918, 0.80991405, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1988355161]
+libraries/ = SubResource("AnimationLibrary_vqui7")
+
+[node name="MonsterTruck" type="Sprite2D" parent="." unique_id=55895486]
+position = Vector2(-1168.0004, -600)
+rotation = -0.1134464
+scale = Vector2(3, 3)
+texture = ExtResource("7_rfyso")
+
+[node name="Wheel1" type="Sprite2D" parent="MonsterTruck" unique_id=590844887]
+position = Vector2(142, 88)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_k44lx")
+
+[node name="Wheel2" type="Sprite2D" parent="MonsterTruck" unique_id=1020828521]
+position = Vector2(-136, 88)
+rotation = 31.415926
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_k44lx")
+
+[node name="CakeTop" type="Sprite2D" parent="." unique_id=1392687420]
+self_modulate = Color(0.74978, 0.74978, 0.74977994, 1)
+position = Vector2(960, 784)
+scale = Vector2(15, 5)
+texture = ExtResource("9_fiag0")
+
+[node name="Mole1" type="Sprite2D" parent="." unique_id=2033311715]
+position = Vector2(1256.0043, 935.99994)
+texture = ExtResource("10_vqui7")
+flip_h = true
+
+[node name="Mole2" type="Sprite2D" parent="." unique_id=807047736]
+position = Vector2(1255.9987, 935.99994)
+texture = ExtResource("11_4hbdp")
+
+[node name="CakeTop2" type="Sprite2D" parent="." unique_id=1316764135]
+position = Vector2(1048, 1056)
+scale = Vector2(13.655882, 5.5405736)
+texture = ExtResource("9_fiag0")
+
+[node name="CakeTop3" type="Sprite2D" parent="." unique_id=1737804352]
+self_modulate = Color(0.96474224, 0.96474224, 0.9647421, 1)
+position = Vector2(968, 1248)
+scale = Vector2(16, 8)
+texture = ExtResource("9_fiag0")
+
+[node name="WinContainer" type="MarginContainer" parent="." unique_id=653819457]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 632.0
+offset_top = 680.0
+offset_right = 1832.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(596.36365, 189.09088)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Panel" type="Panel" parent="WinContainer" unique_id=1025546149]
+custom_minimum_size = Vector2(1200, 400)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fiag0")
+
+[node name="Label" type="Label" parent="WinContainer/Panel" unique_id=900482116]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.5716493, 0.5716493, 0.57164913, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_font_sizes/font_size = 250
+text = "You Win!"
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="SpawnPoints/LevelExitL" to="." method="_on_level_exit_l_body_entered"]
 [connection signal="body_entered" from="SpawnPoints/LevelExitR" to="." method="_on_level_exit_r_body_entered"]

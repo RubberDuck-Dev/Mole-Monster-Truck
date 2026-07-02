@@ -97,10 +97,34 @@ tracks/4/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BackgroundArt/BGSprite:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_vlnuv")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BackgroundArt/BGSprite:flip_h")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_i5lcu"]
 resource_name = "drive_off"
-length = 6.0
+length = 5.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -108,10 +132,10 @@ tracks/0/path = NodePath("BackgroundArt/MonsterTruck:skew")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(3.0666666, 3.1666665, 3.2666667, 3.3666666, 3.4666667, 3.5341282, 3.634128, 3.7341282, 3.8341281, 3.9341283),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(3.0666666, 3.1666665, 3.2666667, 3.3666666, 3.4666667, 3.5341282, 3.634128, 3.7341282, 3.8341281, 3.9341283, 4.289772, 4.389772, 4.489772, 4.589772, 4.689772, 4.7572336, 4.8572335, 4.9572334, 5.057234, 5.1572337, 5.6831045, 5.7831044, 5.8831043, 5.9831047, 6.0831046, 6.150566, 6.250566, 6.350566, 6.4505663, 6.550566, 6.990694, 7.090694, 7.190694, 7.290694, 7.390694, 7.4581556, 7.5581555, 7.6581554, 7.758156, 7.8581557, 8.534079, 8.634079, 8.734078, 8.834079, 8.934078, 9.00154, 9.10154, 9.20154, 9.30154, 9.401541),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.02617994, -0.04363323, 0.034906585, -0.05235988, 0.0, 0.02617994, -0.04363323, 0.034906585, -0.05235988]
+"values": [0.0, 0.02617994, -0.04363323, 0.034906585, -0.05235988, 0.0, 0.02617994, -0.04363323, 0.034906585, -0.05235988, 0.0, 0.02617994, -0.04363323, 0.034906585, -0.05235988, 0.0, 0.02617994, -0.04363323, 0.034906585, -0.05235988, 0.0, 0.02617994, -0.04363323, 0.034906585, -0.05235988, 0.0, 0.02617994, -0.04363323, 0.034906585, -0.05235988, 0.0, 0.02617994, -0.04363323, 0.034906585, -0.05235988, 0.0, 0.02617994, -0.04363323, 0.034906585, -0.05235988, 0.0, 0.02617994, -0.04363323, 0.034906585, -0.05235988, 0.0, 0.02617994, -0.04363323, 0.034906585, -0.05235988]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -120,10 +144,10 @@ tracks/1/path = NodePath("BackgroundArt/MonsterTruck:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(3.0666666, 3.9364707, 5.1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(3.0666666, 3.9364707, 5.1, 5.209023, 5.6208386, 6.7, 8.266666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(360, 424.00003), Vector2(360, 424.00003), Vector2(2768, 424.00003)]
+"values": [Vector2(360, 424.00003), Vector2(360, 424.00003), Vector2(3322.365, 416), Vector2(-631.99994, 352), Vector2(1024, -7.9999924), Vector2(3144, -1032), Vector2(4080, -2232)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -132,10 +156,10 @@ tracks/2/path = NodePath("BackgroundArt/MonsterTruck/Wheel1:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.88647294, 4.1220994),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.88647294, 3.8580806, 8.8),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 12.566371]
+"values": [0.0, 0.0, 12.566371]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -144,10 +168,10 @@ tracks/3/path = NodePath("BackgroundArt/MonsterTruck/Wheel2:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.88647294, 4.1220994),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.88647294, 3.8580806, 8.866667),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 12.566371]
+"values": [0.0, 0.0, 12.566371]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -156,16 +180,69 @@ tracks/4/path = NodePath("BackgroundArt/MonsterTruck:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(3.0666666, 3.9088159, 3.967914, 5.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(3.0666666, 3.9088159, 3.967914, 5.1, 5.139158, 5.7010617, 6.997306, 8.166666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.0, -0.4502949470145372, -0.04712389]
+"values": [0.0, 0.0, -0.4502949470145372, -0.04712389, -0.04712389, -0.1605703, -0.50963616, -0.39618975]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BackgroundArt/BGSprite:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_vlnuv"), ExtResource("2_vlnuv")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BackgroundArt/BGSprite:flip_h")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_xe1qq"]
+resource_name = "show_truck"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackgroundArt/MonsterTruck:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.47158962, 0.5715895, 0.6715897, 0.7715896, 0.8715897, 0.9390512, 1.039051, 1.1390512, 1.2390511, 1.3390512, 1.694695),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.02617994, -0.04363323, 0.034906585, -0.05235988, 0.0, 0.02617994, -0.04363323, 0.034906585, -0.05235988, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BackgroundArt/MonsterTruck:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1016, 392), Vector2(360, 424.00003)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xe1qq"]
 _data = {
 &"RESET": SubResource("Animation_4d72q"),
-&"drive_off": SubResource("Animation_i5lcu")
+&"drive_off": SubResource("Animation_i5lcu"),
+&"show_truck": SubResource("Animation_xe1qq")
 }
 
 [node name="HomeGarage" type="Node2D" unique_id=1916670072]
@@ -179,9 +256,9 @@ metadata/_edit_lock_ = true
 [node name="BackgroundArt" type="Node2D" parent="." unique_id=336444561]
 
 [node name="BGSprite" type="Sprite2D" parent="BackgroundArt" unique_id=1374218362]
-position = Vector2(976, -336)
+position = Vector2(1064, 304)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_vlnuv")
-flip_h = true
 
 [node name="MoleBed" type="Sprite2D" parent="BackgroundArt" unique_id=650813001]
 position = Vector2(1544.0001, 416.00003)
@@ -243,7 +320,7 @@ occluder = SubResource("OccluderPolygon2D_vlnuv")
 [node name="SpawnPoints" type="Node2D" parent="." unique_id=1057099240]
 
 [node name="MoleSpawnL" type="Node2D" parent="SpawnPoints" unique_id=1273875179]
-position = Vector2(-1024, 616.00006)
+position = Vector2(416, 736.00006)
 rotation = 3.1415927
 scale = Vector2(1.6841433, -1.7996314)
 
@@ -299,3 +376,4 @@ libraries/ = SubResource("AnimationLibrary_xe1qq")
 [connection signal="body_entered" from="SpawnPoints/LevelExitL" to="." method="_on_level_exit_l_body_entered"]
 [connection signal="body_entered" from="SpawnPoints/LevelExitR" to="." method="_on_level_exit_r_body_entered"]
 [connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

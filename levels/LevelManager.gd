@@ -44,6 +44,9 @@ const MONSTER_TRUCK_DRIVEN = preload("uid://645nsjlb1x5f")
 func _ready() -> void:
 	#var from_left: bool = GameManager.spawn_on_left
 	#mole_instance.global_position = (mole_spawn_l if from_left else mole_spawn_r).global_position
+
+	enter_direction_left = GameManager.spawn_on_left
+
 	if can_spawn_human:
 		spawn_human()
 	update_human()
@@ -86,7 +89,7 @@ func _process(delta: float) -> void:
 		check_level_handling()
 
 	if GameManager.show_truck:
-		show_truck()
+		keep_showing_truck()
 
 func handle_dialogue()->void:
 	var id = GameManager.dialogue_for_state()
@@ -97,11 +100,11 @@ func handle_dialogue()->void:
 		HUD.start_dialogue(id)
 
 func check_level_handling()->void:
-	if GameManager.current_idx==1 and GameManager.part_collected==0:
+	if GameManager.current_idx==1 and GameManager.parts_collected==0:
 		#if wheel not collected, do not 
 		level_exit_right_collision.disabled=true
 		HUD.start_dialogue(4)
-	if GameManager.current_idx==1 and GameManager.part_collected>0:
+	if GameManager.current_idx==1 and GameManager.parts_collected>0:
 		level_exit_right_collision.disabled=false
 
 func connect_obstructions()->void:
@@ -203,6 +206,8 @@ func _on_reset_timer_timeout() -> void:
 
 func _on_level_exit_r_body_entered(body)->void:
 	if _can_exit and body == mole_instance:
+		GameManager.spawn_on_left=true
+
 		if not GameManager.can_progress():
 #		if GameManager.current_idx == 1 and GameManager.stage_completed<GameManager.current_idx:
 			HUD.start_dialogue(4)
@@ -216,6 +221,7 @@ func _on_level_exit_r_body_entered(body)->void:
 
 func _on_level_exit_l_body_entered(body)->void:
 	if _can_exit and body == mole_instance:
+		GameManager.spawn_on_left=false
 		#print("calling load_level: -1")
 		HUD.show_dialogue(false)
 		GameManager.load_level.call_deferred(-1)
@@ -251,6 +257,13 @@ func show_truck():
 	if has_node("BackgroundArt/MonsterTruck"):
 		GameManager.show_truck=true
 
+		$AnimationPlayer.play("show_truck")
+	keep_showing_truck()
+
+func keep_showing_truck():
+	if has_node("BackgroundArt/MonsterTruck"):
+		GameManager.show_truck=true
+
 		$BackgroundArt/MonsterTruck.visible = true
 
 		var wheels = GameManager.parts_collected.size()
@@ -277,5 +290,7 @@ func ride_truck()->void:
 #		AudioManager.play_sfx("truck_engine")		
 		$AnimationPlayer.play("drive_off")
 		
-	pass
-	
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name=="drive_off":
+		GameManager.go_to_level(4)

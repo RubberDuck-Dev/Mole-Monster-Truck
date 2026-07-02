@@ -67,8 +67,6 @@ func _physics_process(_delta: float) -> void:
 #		AudioManager.play_sfx("collected")
 		pass
 
-
-
 func hide_labels()->void:
 	$Label.visible = false
 	$PushArrow.visible = false

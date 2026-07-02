@@ -16,11 +16,11 @@ extends CanvasLayer
 	0:[[0,"Good morning, mon cher."], [1,"Erghhh.."], [0,"Too early?"], [1,"Too early."],[0,"Shall we get some air?"]],
 	1:[[0,"What to do..."], [0,"Aha!"], [0,"Let's grab that wheel!"]],
 	2:[[1,"What's that for?"], [0,"Darling, as I said..."],[0,"I wanted some air..."],
-		[1,"A MoNsTeR TrUcK!?","show_truck"],[1,"Are you mad? We're moles!"],[0,"We are. And we like monster trucks."]],
+		[1,"A MoNsTeR TrUcK!?","show_truck"],[1,"Are you mad? We're moles!"],[0,"We are. And we like monster trucks."],[1,"Very true. So keep going!"]],
 	3:[[0,"Huh?!"], [0,"I'm being watched..."]],
 	4:[[0,"I should return home."]],
 	5:[[0,"I should fetch that."]],
-	6:[[0,"One more, my dear."]],
+	6:[[0,"Only more wheel to go, my dear."],[1,"Trucks have only 3 wheels?"],[0,"Budget cuts, my star. Budget cuts."]],
 	7:[[0,"Hop in!","ride_truck"]]
 	}
 
