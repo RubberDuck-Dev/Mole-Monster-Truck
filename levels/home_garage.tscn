@@ -124,7 +124,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_i5lcu"]
 resource_name = "drive_off"
-length = 5.5
+length = 5.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -144,10 +144,10 @@ tracks/1/path = NodePath("BackgroundArt/MonsterTruck:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(3.0666666, 3.9364707, 5.1, 5.209023, 5.6208386, 6.7, 8.266666),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(3.0666666, 3.9364707, 5.1, 5.6208386, 6.7, 8.266666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(360, 424.00003), Vector2(360, 424.00003), Vector2(3322.365, 416), Vector2(-631.99994, 352), Vector2(1024, -7.9999924), Vector2(3144, -1032), Vector2(4080, -2232)]
+"values": [Vector2(360, 424.00003), Vector2(360, 424.00003), Vector2(3322.365, 416), Vector2(1024, -7.9999924), Vector2(3144, -1032), Vector2(4080, -2232)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -267,7 +267,6 @@ texture = ExtResource("3_i5lcu")
 flip_h = true
 
 [node name="MonsterTruck" type="Sprite2D" parent="BackgroundArt" unique_id=199098043]
-visible = false
 position = Vector2(360, 424.00003)
 scale = Vector2(3, 3)
 texture = ExtResource("3_4d72q")

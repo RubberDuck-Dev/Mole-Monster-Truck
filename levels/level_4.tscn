@@ -141,7 +141,7 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_ng40l"]
 resource_name = "drive_ramp"
-length = 2.5000000000000004
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -229,7 +229,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_04hp8"]
 resource_name = "in_air"
-length = 2.0
+length = 2.5000000000000004
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -249,8 +249,8 @@ tracks/1/path = NodePath("MonsterTruck:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.7),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 2.4333334),
+"transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
 "values": [Vector2(-304.00037, -831.9998), Vector2(5752, 599.9999)]
 }
@@ -273,7 +273,7 @@ tracks/3/path = NodePath("MonsterTruck:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.7),
+"times": PackedFloat32Array(0, 2.4333334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [-0.1134464, 0.26005405]
@@ -285,7 +285,7 @@ tracks/4/path = NodePath("MonsterTruck/Wheel1:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1.8),
+"times": PackedFloat32Array(0, 2.4333334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 12.566371]
@@ -297,7 +297,7 @@ tracks/5/path = NodePath("MonsterTruck/Wheel2:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 1.8),
+"times": PackedFloat32Array(0, 2.4333334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 12.566371]
@@ -309,7 +309,7 @@ tracks/6/path = NodePath("BackgroundArt/Parallax2D2/BGSprite:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 1.9945642),
+"times": PackedFloat32Array(0, 2.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(848, 528), Vector2(-111.99994, 528)]
@@ -321,7 +321,7 @@ tracks/7/path = NodePath("BackgroundArt/Parallax2D/BGSprite:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 1.9945642),
+"times": PackedFloat32Array(0, 2.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(848, 528), Vector2(24, 560)]
