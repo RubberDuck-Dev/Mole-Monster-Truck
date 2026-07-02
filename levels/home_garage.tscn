@@ -263,6 +263,7 @@ texture = ExtResource("2_vlnuv")
 
 [node name="PrideFlag" type="Sprite2D" parent="BackgroundArt" unique_id=521861452]
 position = Vector2(920, 184)
+rotation = 0.17912717
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_xe1qq")
 offset = Vector2(384, 0)
