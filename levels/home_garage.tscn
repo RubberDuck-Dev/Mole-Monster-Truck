@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d1v3up6gq7g20" path="res://art-assets/component-art/home_bg.png" id="2_vlnuv"]
 [ext_resource type="Texture2D" uid="uid://cbg4lftn18kom" path="res://art-assets/component-art/monster_truck.png" id="3_4d72q"]
 [ext_resource type="Texture2D" uid="uid://b6su3m2c3pw7o" path="res://art-assets/component-art/mole2_bed.png" id="3_i5lcu"]
+[ext_resource type="Texture2D" uid="uid://eqnc6d1mslq7" path="res://art-assets/component-art/Gay_Pride_Flag.svg" id="3_xe1qq"]
 [ext_resource type="Texture2D" uid="uid://baw7ugn0w87yc" path="res://art-assets/component-art/wheel.png" id="4_i5lcu"]
 [ext_resource type="Texture2D" uid="uid://doiko4et5mkxg" path="res://art-assets/component-art/shelf_floor.png" id="4_xe1qq"]
 [ext_resource type="Script" uid="uid://cpfcpqjd08voh" path="res://components/human_follow.gd" id="6_ow25y"]
@@ -260,6 +261,13 @@ position = Vector2(1064, 304)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_vlnuv")
 
+[node name="PrideFlag" type="Sprite2D" parent="BackgroundArt" unique_id=521861452]
+position = Vector2(920, 184)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_xe1qq")
+offset = Vector2(384, 0)
+flip_h = true
+
 [node name="MoleBed" type="Sprite2D" parent="BackgroundArt" unique_id=650813001]
 position = Vector2(1544.0001, 416.00003)
 scale = Vector2(1.5, 1.5)
@@ -267,6 +275,7 @@ texture = ExtResource("3_i5lcu")
 flip_h = true
 
 [node name="MonsterTruck" type="Sprite2D" parent="BackgroundArt" unique_id=199098043]
+visible = false
 position = Vector2(360, 424.00003)
 scale = Vector2(3, 3)
 texture = ExtResource("3_4d72q")

@@ -84,19 +84,20 @@ shape = SubResource("WorldBoundaryShape2D_g4v7s")
 z_index = 3
 
 [node name="Obstruction" parent="Obstructions" unique_id=1476029417 instance=ExtResource("5_gyffv")]
-position = Vector2(80, 768)
+position = Vector2(-64, 760)
+rotation = 0.04238207
 
 [node name="Obstruction2" parent="Obstructions" unique_id=2088114378 instance=ExtResource("5_gyffv")]
-position = Vector2(712, 752)
+position = Vector2(624, 736)
 
 [node name="Obstruction5" parent="Obstructions" unique_id=446978572 instance=ExtResource("5_gyffv")]
-position = Vector2(-704, 752)
+position = Vector2(-864, 768)
 
 [node name="Obstruction7" parent="Obstructions" unique_id=1724311499 instance=ExtResource("5_gyffv")]
-position = Vector2(2072, 776)
+position = Vector2(1872, 768)
 
 [node name="Obstruction8" parent="Obstructions" unique_id=7420098 instance=ExtResource("5_gyffv")]
-position = Vector2(2744, 744)
+position = Vector2(2496, 696)
 
 [node name="SpawnPoints" type="Node2D" parent="." unique_id=1057099240]
 

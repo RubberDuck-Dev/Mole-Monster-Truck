@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://cpfcpqjd08voh" path="res://components/human_follow.gd" id="6_04hp8"]
 [ext_resource type="Texture2D" uid="uid://645nsjlb1x5f" path="res://art-assets/component-art/monster_truck_driven.png" id="8_sc6c1"]
 [ext_resource type="Texture2D" uid="uid://baw7ugn0w87yc" path="res://art-assets/component-art/wheel.png" id="9_ng40l"]
+[ext_resource type="Texture2D" uid="uid://eqnc6d1mslq7" path="res://art-assets/component-art/Gay_Pride_Flag.svg" id="10_04hp8"]
+[ext_resource type="Texture2D" uid="uid://b5i5eb683x6um" path="res://art-assets/component-art/icon.svg" id="11_8hlpj"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5hph3"]
 polygon = PackedVector2Array(-357.33334, 64, 357.33334, 53.333313, 358.66666, 128, -360, 128)
@@ -137,6 +139,30 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(848, 528)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("FlagPole/PrideFlag:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("FlagPole/PrideFlag:skew")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.082274675]
 }
 
 [sub_resource type="Animation" id="Animation_ng40l"]
@@ -327,11 +353,71 @@ tracks/7/keys = {
 "values": [Vector2(848, 528), Vector2(24, 560)]
 }
 
+[sub_resource type="Animation" id="Animation_8hlpj"]
+resource_name = "wave_flag"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlagPole/PrideFlag:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666667, 0.33333334, 0.6333333, 0.9, 1.3333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.013962634, -0.013962634, 0.0, 0.013962634]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlagPole/PrideFlag:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.56666666, 0.96666664, 1.2141585, 1.4333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.082274675, -0.13962634, 0.06981317, -0.13962634, 0.06981317, 0.082274675]
+}
+
+[sub_resource type="Animation" id="Animation_qhnv2"]
+resource_name = "wave_flag_2"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlagPole/PrideFlag:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666667, 0.33333334, 0.6333333, 0.9, 1.3333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.013962634, -0.013962634, 0.0, 0.013962634]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlagPole/PrideFlag:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.56666666, 0.96666664, 1.2141585, 1.4333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.082274675, -0.13962634, 0.06981317, -0.13962634, 0.06981317, 0.082274675]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_04hp8"]
 _data = {
 &"RESET": SubResource("Animation_sc6c1"),
 &"drive_ramp": SubResource("Animation_ng40l"),
-&"in_air": SubResource("Animation_04hp8")
+&"in_air": SubResource("Animation_04hp8"),
+&"wave_flag": SubResource("Animation_8hlpj"),
+&"wave_flag_2": SubResource("Animation_qhnv2")
 }
 
 [node name="Level4" type="Node2D" unique_id=1916670072]
@@ -444,6 +530,21 @@ one_shot = true
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=624462843]
 color = Color(0.9999998, 0.90880173, 0.71830225, 1)
 
+[node name="FlagPole3" type="Sprite2D" parent="." unique_id=808987398]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(-792, 456)
+rotation = -0.010471981
+scale = Vector2(0.49999997, 3.9999998)
+texture = ExtResource("11_8hlpj")
+
+[node name="PrideFlag" type="Sprite2D" parent="FlagPole3" unique_id=152004277]
+position = Vector2(67.515015, -41.913933)
+scale = Vector2(0.99994606, 0.12543105)
+skew = 0.082274675
+texture = ExtResource("10_04hp8")
+offset = Vector2(384, 0)
+flip_h = true
+
 [node name="MonsterTruck" type="Sprite2D" parent="." unique_id=2038611006]
 position = Vector2(-2200.0002, 447.99994)
 rotation = -0.1134464
@@ -463,6 +564,37 @@ texture = ExtResource("9_ng40l")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=307574608]
 libraries/ = SubResource("AnimationLibrary_04hp8")
+autoplay = &"wave_flag"
+
+[node name="FlagPole" type="Sprite2D" parent="." unique_id=1277547138]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(568, 576)
+rotation = -0.010471983
+scale = Vector2(0.49999997, 3.9999998)
+texture = ExtResource("11_8hlpj")
+
+[node name="PrideFlag" type="Sprite2D" parent="FlagPole" unique_id=882050203]
+position = Vector2(67.515015, -41.913933)
+scale = Vector2(0.99994606, 0.12543105)
+skew = 0.082274675
+texture = ExtResource("10_04hp8")
+offset = Vector2(384, 0)
+flip_h = true
+
+[node name="FlagPole2" type="Sprite2D" parent="." unique_id=209868339]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(-80, 608)
+rotation = -0.010471982
+scale = Vector2(0.49999997, 3.9999998)
+texture = ExtResource("11_8hlpj")
+
+[node name="PrideFlag" type="Sprite2D" parent="FlagPole2" unique_id=291104910]
+position = Vector2(67.515015, -41.913933)
+scale = Vector2(0.99994606, 0.12543105)
+skew = 0.082274675
+texture = ExtResource("10_04hp8")
+offset = Vector2(384, 0)
+flip_h = true
 
 [connection signal="body_entered" from="SpawnPoints/LevelExitL" to="." method="_on_level_exit_l_body_entered"]
 [connection signal="body_entered" from="SpawnPoints/LevelExitR" to="." method="_on_level_exit_r_body_entered"]

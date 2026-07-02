@@ -8,9 +8,15 @@
 [ext_resource type="Script" uid="uid://cpfcpqjd08voh" path="res://components/human_follow.gd" id="6_fiag0"]
 [ext_resource type="Texture2D" uid="uid://645nsjlb1x5f" path="res://art-assets/component-art/monster_truck_driven.png" id="7_rfyso"]
 [ext_resource type="Texture2D" uid="uid://baw7ugn0w87yc" path="res://art-assets/component-art/wheel.png" id="8_k44lx"]
-[ext_resource type="Texture2D" uid="uid://d2pa8objekv3y" path="res://art-assets/component-art/retina.png" id="9_fiag0"]
+[ext_resource type="Texture2D" uid="uid://br034dhvf1m8y" path="res://art-assets/component-art/cake_top.png" id="9_mdfid"]
 [ext_resource type="Texture2D" uid="uid://clys6gftonmnj" path="res://art-assets/component-art/mole.png" id="10_vqui7"]
 [ext_resource type="Texture2D" uid="uid://45xt7gnvhhga" path="res://art-assets/component-art/mole_2.png" id="11_4hbdp"]
+[ext_resource type="Texture2D" uid="uid://cqk2e3m5u6shh" path="res://art-assets/component-art/cake_crash_1.png" id="11_svq2v"]
+[ext_resource type="Texture2D" uid="uid://7m3pxaledw54" path="res://art-assets/component-art/cake_crash_2.png" id="12_004h1"]
+[ext_resource type="Texture2D" uid="uid://b5i5eb683x6um" path="res://art-assets/component-art/icon.svg" id="12_4hbdp"]
+[ext_resource type="Texture2D" uid="uid://opx3mrnjxd8h" path="res://art-assets/component-art/cake_base.png" id="12_dnoif"]
+[ext_resource type="Texture2D" uid="uid://eqnc6d1mslq7" path="res://art-assets/component-art/Gay_Pride_Flag.svg" id="13_mdfid"]
+[ext_resource type="Texture2D" uid="uid://dldr4yi1v70f7" path="res://art-assets/component-art/cake_top_front.png" id="14_tl3e8"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5hph3"]
 polygon = PackedVector2Array(-357.33334, 64, 357.33334, 53.333313, 358.66666, 128, -360, 128)
@@ -152,6 +158,90 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector2(0.5, 0.5)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("FlagPole3/PrideFlag:skew")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.082274675]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("FlagPole3/PrideFlag:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("FlagPole4/PrideFlag:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("FlagPole4/PrideFlag:skew")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.082274675]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("CakeCrash:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("MonsterTruck:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CakeCrash2:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_fiag0"]
 resource_name = "cake_splash"
@@ -187,10 +277,10 @@ tracks/2/path = NodePath("Mole1:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(3.0333333, 4.4171553),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 3.0333333, 4.4, 5.969995),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(888, 936), Vector2(888, 456.001)]
+"values": [Vector2(824, 936), Vector2(824, 936), Vector2(824, 696), Vector2(824, 696)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -199,10 +289,10 @@ tracks/3/path = NodePath("Mole2:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(3.046314, 4.4171553),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 3.0666666, 4.399019, 5.9808235),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1255.9987, 935.99994), Vector2(1248.0012, 456.00128)]
+"values": [Vector2(1624, 960), Vector2(1624, 960), Vector2(1624, 744), Vector2(1624, 744)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -276,11 +366,100 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector2(0.5, 0.5), Vector2(1.1, 1.1), Vector2(0.95, 0.95), Vector2(1, 1)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CakeCrash:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1.1129546),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("MonsterTruck:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 2.789233),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("CakeCrash2:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_4hbdp"]
+resource_name = "wave_flag1"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlagPole3/PrideFlag:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.56666666, 0.8331609),
+"transitions": PackedFloat32Array(1, 1, -2),
+"update": 0,
+"values": [0.082274675, -0.1186823891356146, -0.4590216]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlagPole3/PrideFlag:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 0.93333334),
+"transitions": PackedFloat32Array(1, 1, -2),
+"update": 0,
+"values": [0.0, -0.020943951023931755, 0.015707964]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlagPole4/PrideFlag:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8666667),
+"transitions": PackedFloat32Array(1, 1, -2),
+"update": 0,
+"values": [0.0, -0.04886921905584143, 0.038397243543875054]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlagPole4/PrideFlag:skew")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.6333333, 0.96666664),
+"transitions": PackedFloat32Array(1, 1, -2),
+"update": 0,
+"values": [-0.05759586531581307, -0.03141592653589813, 0.024434609527920464]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vqui7"]
 _data = {
 &"RESET": SubResource("Animation_igxl6"),
-&"cake_splash": SubResource("Animation_fiag0")
+&"cake_splash": SubResource("Animation_fiag0"),
+&"wave_flag1": SubResource("Animation_4hbdp")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fiag0"]
@@ -321,8 +500,8 @@ metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Floor" unique_id=73816012]
 self_modulate = Color(0.29709297, 0.29709294, 0.2970929, 1)
-position = Vector2(168, 96)
-scale = Vector2(6, 1.5)
+position = Vector2(168, 352)
+scale = Vector2(6, 3)
 texture = ExtResource("4_k44lx")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Floor" unique_id=1227552798]
@@ -392,15 +571,26 @@ script = ExtResource("6_fiag0")
 one_shot = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=624462843]
+visible = false
 color = Color(0.9997135, 0.8984918, 0.80991405, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1988355161]
 libraries/ = SubResource("AnimationLibrary_vqui7")
+autoplay = &"wave_flag1"
+
+[node name="CakeBase" type="Sprite2D" parent="." unique_id=1737804352]
+position = Vector2(1208, 664)
+texture = ExtResource("12_dnoif")
+
+[node name="CakeTop" type="Sprite2D" parent="." unique_id=1392687420]
+position = Vector2(1208, 664)
+texture = ExtResource("9_mdfid")
 
 [node name="MonsterTruck" type="Sprite2D" parent="." unique_id=55895486]
+visible = false
 position = Vector2(-1168.0004, -600)
 rotation = -0.1134464
-scale = Vector2(3, 3)
+scale = Vector2(3.0000002, 3.0000002)
 texture = ExtResource("7_rfyso")
 
 [node name="Wheel1" type="Sprite2D" parent="MonsterTruck" unique_id=590844887]
@@ -414,11 +604,14 @@ rotation = 31.415926
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_k44lx")
 
-[node name="CakeTop" type="Sprite2D" parent="." unique_id=1392687420]
-self_modulate = Color(0.74978, 0.74978, 0.74977994, 1)
-position = Vector2(960, 784)
-scale = Vector2(15, 5)
-texture = ExtResource("9_fiag0")
+[node name="CakeCrash" type="Sprite2D" parent="." unique_id=1553280276]
+visible = false
+position = Vector2(1320, 704)
+texture = ExtResource("11_svq2v")
+
+[node name="CakeCrash2" type="Sprite2D" parent="." unique_id=179785799]
+position = Vector2(1320, 704)
+texture = ExtResource("12_004h1")
 
 [node name="Mole1" type="Sprite2D" parent="." unique_id=2033311715]
 position = Vector2(1256.0043, 935.99994)
@@ -429,16 +622,39 @@ flip_h = true
 position = Vector2(1255.9987, 935.99994)
 texture = ExtResource("11_4hbdp")
 
-[node name="CakeTop2" type="Sprite2D" parent="." unique_id=1316764135]
-position = Vector2(1048, 1056)
-scale = Vector2(13.655882, 5.5405736)
-texture = ExtResource("9_fiag0")
+[node name="CakeTopFront" type="Sprite2D" parent="." unique_id=1627966475]
+position = Vector2(1208, 680)
+texture = ExtResource("14_tl3e8")
 
-[node name="CakeTop3" type="Sprite2D" parent="." unique_id=1737804352]
-self_modulate = Color(0.96474224, 0.96474224, 0.9647421, 1)
-position = Vector2(968, 1248)
-scale = Vector2(16, 8)
-texture = ExtResource("9_fiag0")
+[node name="FlagPole3" type="Sprite2D" parent="." unique_id=2107298168]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(1928, 440)
+rotation = -0.010471982
+scale = Vector2(0.5, 4)
+texture = ExtResource("12_4hbdp")
+
+[node name="PrideFlag" type="Sprite2D" parent="FlagPole3" unique_id=804010013]
+position = Vector2(67.515015, -41.913933)
+scale = Vector2(0.99994606, 0.12543105)
+skew = 0.082274675
+texture = ExtResource("13_mdfid")
+offset = Vector2(384, 0)
+flip_h = true
+
+[node name="FlagPole4" type="Sprite2D" parent="." unique_id=440042603]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(416, 528)
+rotation = -0.010471982
+scale = Vector2(0.5, 4)
+texture = ExtResource("12_4hbdp")
+
+[node name="PrideFlag" type="Sprite2D" parent="FlagPole4" unique_id=1580122240]
+position = Vector2(67.515015, -41.913933)
+scale = Vector2(0.99994606, 0.12543105)
+skew = 0.082274675
+texture = ExtResource("13_mdfid")
+offset = Vector2(384, 0)
+flip_h = true
 
 [node name="WinContainer" type="MarginContainer" parent="." unique_id=653819457]
 visible = false
@@ -447,10 +663,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 632.0
-offset_top = 680.0
-offset_right = 1832.0
-offset_bottom = 1080.0
+offset_left = 640.0
+offset_top = 880.0
+offset_right = 1856.0
+offset_bottom = 1296.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
